@@ -1,0 +1,4 @@
+.DS_Store
+/cypress/videos
+/node_modules
+/public/bundle.*
