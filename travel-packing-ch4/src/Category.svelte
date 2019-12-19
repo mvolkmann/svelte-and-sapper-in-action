@@ -34,11 +34,6 @@
     itemName = '';
   }
 
-  function deleteItem(item) {
-    delete category.items[item.id];
-    category = category; // triggers update
-  }
-
   function handleKey(event) {
     if (event.code === 'Enter') event.target.blur();
   }

@@ -1,6 +1,9 @@
 <script>
+  import {createEventDispatcher} from 'svelte';
+
   export let item;
 
+  const dispatch = createEventDispatcher();
   let editing = false;
 
   function handleKey(event) {
@@ -23,7 +26,7 @@
       {item.name}
     </span>
   {/if}
-  <button class="icon">&#x1F5D1;</button>
+  <button class="icon" on:click={() => dispatch('delete')}>&#x1F5D1;</button>
 </li>
 
 <style>

@@ -1,7 +1,9 @@
 <script>
+  import {createEventDispatcher} from 'svelte';
   import Category from './Category.svelte';
   import {getGuid, sortOnName} from './util';
 
+  const dispatch = createEventDispatcher();
   let categoryArray = [];
   let categories = {};
   let categoryName;
@@ -40,6 +42,23 @@
     delete categories[category.id];
     categories = categories;
   }
+
+  // Must do this before first call to persist.
+  restore();
+
+  // Any time categories changes, persist it to localStorage.
+  $: if (categories) persist();
+
+  function persist() {
+    localStorage.setItem('travel-packing', JSON.stringify(categories));
+  }
+
+  function restore() {
+    const text = localStorage.getItem('travel-packing');
+    if (text && text !== '{}') {
+      categories = JSON.parse(text);
+    }
+  }
 </script>
 
 <section>
@@ -50,7 +69,7 @@
         <input bind:value={categoryName} />
       </label>
       <button disabled={!categoryName}>Add Category</button>
-      <button class="logout-btn">
+      <button class="logout-btn" on:click={() => dispatch('logout')}>
         Log Out
       </button>
     </form>
@@ -82,7 +101,12 @@
   <div class="categories">
     {#each categoryArray as category (category.id)}
       <div>
-        <Category bind:category {categories} {show} />
+        <Category
+          bind:category
+          {categories}
+          {show}
+          on:delete={() => deleteCategory(category)}
+          on:persist={persist} />
       </div>
     {/each}
   </div>

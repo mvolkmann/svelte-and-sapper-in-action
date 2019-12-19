@@ -17,9 +17,7 @@
       <input type="password" bind:value={password} />
     </label>
     <div class="buttons">
-      <button disabled={!username || !password}>
-        Login
-      </button>
+      <button disabled={!username || !password}>Login</button>
       <button type="button" on:click={signup}>Sign Up</button>
     </div>
   </form>

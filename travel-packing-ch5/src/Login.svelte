@@ -1,8 +1,11 @@
 <script>
+  import {createEventDispatcher} from 'svelte';
+
+  const dispatch = createEventDispatcher();
   let password = '';
   let username = '';
 
-  const login = () => alert('You pressed Login.');
+  const login = () => dispatch('login');
   const signup = () => alert('You pressed Signup.');
 </script>
 
@@ -17,9 +20,7 @@
       <input type="password" bind:value={password} />
     </label>
     <div class="buttons">
-      <button disabled={!username || !password}>
-        Login
-      </button>
+      <button disabled={!username || !password}>Login</button>
       <button type="button" on:click={signup}>Sign Up</button>
     </div>
   </form>

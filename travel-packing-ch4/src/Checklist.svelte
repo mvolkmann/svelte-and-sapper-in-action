@@ -34,12 +34,6 @@
     }
     categories = categories;
   }
-
-  function deleteCategory(category) {
-    // Later will we ask for confirmation before deleting.
-    delete categories[category.id];
-    categories = categories;
-  }
 </script>
 
 <section>
@@ -50,9 +44,7 @@
         <input bind:value={categoryName} />
       </label>
       <button disabled={!categoryName}>Add Category</button>
-      <button class="logout-btn">
-        Log Out
-      </button>
+      <button class="logout-btn">Log Out</button>
     </form>
     <p>
       Suggested categories include Backpack, Clothes,

@@ -1,4 +1,5 @@
 <script>
+  import {createEventDispatcher} from 'svelte';
   import Item from './Item.svelte';
   import {getGuid, sortOnName} from './util';
 
@@ -6,6 +7,7 @@
   export let category;
   export let show;
 
+  const dispatch = createEventDispatcher();
   let editing = false;
   let itemName = '';
   let items = [];
@@ -32,11 +34,15 @@
     items[id] = {id, name: itemName, packed: false};
     category.items = items;
     itemName = '';
+
+    dispatch('persist');
   }
 
   function deleteItem(item) {
     delete category.items[item.id];
     category = category; // triggers update
+
+    dispatch('persist');
   }
 
   function handleKey(event) {
@@ -63,7 +69,7 @@
       <span on:click={() => (editing = true)}>{category.name}</span>
     {/if}
     <span class="status">{status}</span>
-    <button class="icon">&#x1F5D1;</button>
+    <button class="icon" on:click={() => dispatch('delete')}>&#x1F5D1;</button>
   </h3>
 
   <form on:submit|preventDefault={addItem}>
@@ -77,8 +83,8 @@
   <ul>
     {#each itemsToShow as item (item.id)}
       <!-- This bind causes the category object to update
-        when the item packed value is toggled. -->
-      <Item bind:item />
+           when the item packed value is toggled. -->
+      <Item bind:item on:delete={() => deleteItem(item)} />
     {:else}
       <div>This category does not contain any items yet.</div>
     {/each}
