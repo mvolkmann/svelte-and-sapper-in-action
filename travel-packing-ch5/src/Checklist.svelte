@@ -38,7 +38,7 @@
   }
 
   function deleteCategory(category) {
-    // Later will we ask for confirmation before deleting.
+    // Later we will ask for confirmation before deleting.
     delete categories[category.id];
     categories = categories;
   }
