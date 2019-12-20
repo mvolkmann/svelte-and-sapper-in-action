@@ -10,14 +10,14 @@
   <form on:submit|preventDefault={login}>
     <label>
       Username
-      <input bind:value={username} />
+      <input required bind:value={username} />
     </label>
     <label>
       Password
-      <input type="password" bind:value={password} />
+      <input type="password" required bind:value={password} />
     </label>
     <div class="buttons">
-      <button disabled={!username || !password}>Login</button>
+      <button>Login</button>
       <button type="button" on:click={signup}>Sign Up</button>
     </div>
   </form>

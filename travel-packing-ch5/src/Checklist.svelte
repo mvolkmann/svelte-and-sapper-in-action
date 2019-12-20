@@ -66,9 +66,9 @@
     <form on:submit|preventDefault={addCategory}>
       <label>
         New Category
-        <input bind:value={categoryName} />
+        <input required bind:value={categoryName} />
       </label>
-      <button disabled={!categoryName}>Add Category</button>
+      <button>Add Category</button>
       <button class="logout-btn" on:click={() => dispatch('logout')}>
         Log Out
       </button>
