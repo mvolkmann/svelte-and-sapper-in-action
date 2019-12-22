@@ -36,7 +36,7 @@
   }
 
   input[type='checkbox'] {
-    --size: 24px;
+    --size: 1.5rem;
     height: var(--size);
     width: var(--size);
   }
@@ -56,6 +56,6 @@
   }
 
   span {
-    margin: 0 10px;
+    margin: 0 0.5rem;
   }
 </style>

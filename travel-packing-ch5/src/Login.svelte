@@ -31,7 +31,7 @@
     display: flex;
     justify-content: space-between;
 
-    font-size: 24px;
+    font-size: 1.5rem;
     margin-top: 1rem;
   }
 
@@ -41,13 +41,13 @@
 
   input {
     display: block;
-    margin-top: 5px;
+    margin-top: 0.3rem;
   }
 
   label {
     color: white;
     display: block;
-    font-size: 24px;
+    font-size: 1.5rem;
     margin-top: 0.5rem;
   }
 </style>

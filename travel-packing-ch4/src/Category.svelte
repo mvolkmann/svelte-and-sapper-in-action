@@ -99,7 +99,7 @@
   }
 
   section {
-    --padding: 10px;
+    --padding: 0.5rem;
 
     background-color: white;
     border: solid transparent 3px;
@@ -108,14 +108,14 @@
     display: inline-block;
     margin: var(--padding);
     padding: calc(var(--padding) * 2);
-    padding-top: var(--padding);
+    padding-top: 0;
     vertical-align: top;
   }
 
   .status {
-    font-size: 18px;
+    font-size: 1.2rem;
     font-weight: normal;
-    margin: 0 15px;
+    margin: 0 1rem;
   }
 
   ul {

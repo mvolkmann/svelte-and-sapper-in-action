@@ -88,20 +88,19 @@
   }
 
   .clear {
-    margin-left: 30px;
+    margin-left: 2rem;
   }
 
   input[type='radio'] {
-    --size: 24px;
+    --size: 1.5rem;
     height: var(--size);
     width: var(--size);
-    margin-left: 10px;
   }
 
   .logout-btn {
     position: absolute;
-    right: 20px;
-    top: 20px;
+    right: 1rem;
+    top: 1rem;
   }
 
   .radios {
@@ -113,12 +112,7 @@
     display: inline-flex;
     align-items: center;
 
-    margin-left: 1em;
-  }
-
-  .radios > label > input {
-    margin-bottom: -3px;
-    margin-right: 5px;
+    margin-left: 1rem;
   }
 
   section {
@@ -126,7 +120,7 @@
     flex-direction: column;
     align-items: center;
 
-    font-size: 24px;
-    margin-top: 1em;
+    font-size: 1.5rem;
+    margin-top: 1rem;
   }
 </style>
