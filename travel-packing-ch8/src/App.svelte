@@ -1,26 +1,34 @@
 <script>
+  import page from 'page';
   import Checklist from './Checklist.svelte';
   import Login from './Login.svelte';
   import NotFound from './NotFound.svelte';
-  import page from 'page';
 
-  let component = Login;
+  let component;
 
   page.redirect('/', '/login');
   page('/login', () => (component = Login));
   page('/checklist', () => (component = Checklist));
-  page('*', () => (component = NotFound));
+  //page('*', () => (component = NotFound));
+  page('*', () => {
+    console.log('App.svelte: matched *');
+    component = NotFound;
+  });
   page.start();
 </script>
 
+<nav>
+  <a href="/login">Login</a>
+  <a href="/checklist">Checklist</a>
+</nav>
+
 <main>
   <h1 class="hero">Travel Packing Checklist</h1>
-
-  {#if component === Login}
-    <Login on:login={() => page.show('/checklist')} />
-  {:else}
-    <Checklist on:logout={() => page.show('/login')} />
-  {/if}
+  <svelte:component
+    this={component}
+    on:login={() => page.show('/checklist')}
+    on:logout={() => page.show('/login')}
+  />
 </main>
 
 <style>
