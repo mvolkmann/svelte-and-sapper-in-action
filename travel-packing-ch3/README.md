@@ -1,6 +1,6 @@
 # travel-packing-ch3
 
-This is the initial version of the travel packing app.
+This is the initial, chapter 3 version of the travel packing app.
 
 To run this:
 
