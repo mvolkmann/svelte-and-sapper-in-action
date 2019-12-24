@@ -6,7 +6,7 @@
     "dev": "rollup -c -w",
     "format": "prettier --write 'src/**/*.{css,html,js,svelte}'",
     "lint": "eslint --fix --quiet src --ext .js,.svelte",
-    "start": "sirv public"
+    "start": "sirv public --single"
   },
   "devDependencies": {
     "@rollup/plugin-node-resolve": "^6.0.0",
