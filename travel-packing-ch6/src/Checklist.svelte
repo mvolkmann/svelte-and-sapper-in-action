@@ -126,15 +126,14 @@
 
   <div class="categories">
     {#each categoryArray as category (category.id)}
-      <div>
-        <Category
-          bind:category
-          {categories}
-          dnd={dragAndDrop}
-          {show}
-          on:delete={() => deleteCategory(category)}
-          on:persist={persist} />
-      </div>
+      <Category
+        bind:category
+        {categories}
+        dnd={dragAndDrop}
+        {show}
+        on:delete={() => deleteCategory(category)}
+        on:persist={persist}
+      />
     {/each}
   </div>
 </section>

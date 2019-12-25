@@ -1,16 +1,40 @@
 <script>
   import {createEventDispatcher} from 'svelte';
+  import {flip} from 'svelte/animate';
   import Category from './Category.svelte';
+  import Dialog from './Dialog.svelte';
   import {getGuid, sortOnName} from './util';
 
   const dispatch = createEventDispatcher();
+  const options = {duration: 700};
+
   let categoryArray = [];
   let categories = {};
   let categoryName;
+  let myDialog = null;
   let message = '';
   let show = 'all';
 
   $: categoryArray = sortOnName(Object.values(categories));
+
+  let dragAndDrop = {
+    drag(event, categoryId, itemId) {
+      const data = {categoryId, itemId};
+      event.dataTransfer.setData('text/plain', JSON.stringify(data));
+    },
+    drop(event, categoryId) {
+      const json = event.dataTransfer.getData('text/plain');
+      const data = JSON.parse(json);
+
+      const category = categories[data.categoryId];
+      const item = category.items[data.itemId];
+      delete category.items[data.itemId];
+
+      categories[categoryId].items[data.itemId] = item;
+
+      categories = categories;
+    }
+  };
 
   function addCategory() {
     const duplicate = Object.values(categories).some(
@@ -18,7 +42,7 @@
     );
     if (duplicate) {
       message = `The category "${categoryName}" already exists.`;
-      alert(message); // will change to a dialog later
+      myDialog.showModal();
       return;
     }
 
@@ -38,7 +62,12 @@
   }
 
   function deleteCategory(category) {
-    // Later we will ask for confirmation before deleting.
+    if (Object.values(category.items).length) {
+      message = 'This category is not empty.';
+      myDialog.showModal();
+      return;
+    }
+
     delete categories[category.id];
     categories = categories;
   }
@@ -100,18 +129,28 @@
 
   <div class="categories">
     {#each categoryArray as category (category.id)}
-      <Category
-        bind:category
-        {categories}
-        {show}
-        on:delete={() => deleteCategory(category)}
-        on:persist={persist}
-      />
+      <div class="animate" animate:flip={options}>
+        <Category
+          bind:category
+          {categories}
+          dnd={dragAndDrop}
+          {show}
+          on:delete={() => deleteCategory(category)}
+          on:persist={persist}
+        />
+      </div>
     {/each}
   </div>
 </section>
+<Dialog title="Checklist" bind:dialog={myDialog}>
+  <div>{message}</div>
+</Dialog>
 
 <style>
+  .animate {
+    display: inline-block;
+  }
+
   .categories {
     display: inline-flex;
     flex-wrap: wrap;

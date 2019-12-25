@@ -73,9 +73,7 @@
 
   <div class="categories">
     {#each categoryArray as category (category.id)}
-      <div>
-        <Category bind:category {categories} {show} />
-      </div>
+      <Category bind:category {categories} {show} />
     {/each}
   </div>
 </section>
