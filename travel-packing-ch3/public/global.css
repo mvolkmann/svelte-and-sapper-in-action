@@ -49,6 +49,12 @@ input:disabled {
   color: #ccc;
 }
 
+/* This prevents Firefox from displaying a red box shadow
+  around required inputs that have no value. */
+input:invalid {
+  box-shadow: none;
+}
+
 input[type='range'] {
   height: 0;
 }
