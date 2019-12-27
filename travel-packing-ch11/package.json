@@ -9,14 +9,26 @@
     "start": "sirv public --single",
     "test": "jest --watch src"
   },
+  "dependencies": {
+    "dialog-polyfill": "^0.5.0",
+    "page": "^1.11.5",
+    "sirv-cli": "^0.4.4",
+    "uuid": "^3.3.3"
+  },
   "devDependencies": {
     "@babel/core": "^7.7.7",
     "@babel/preset-env": "^7.7.7",
     "@rollup/plugin-node-resolve": "^6.0.0",
     "@testing-library/svelte": "^1.11.0",
     "babel-jest": "^24.9.0",
+    "eslint": "^6.7.2",
+    "eslint-plugin-import": "^2.19.1",
+    "eslint-plugin-prettier": "^3.1.2",
+    "eslint-plugin-svelte3": "^2.7.3",
     "jest": "^24.9.0",
     "jest-transform-svelte": "^2.1.0",
+    "prettier": "^1.19.1",
+    "prettier-plugin-svelte": "^0.7.0",
     "rollup": "^1.12.0",
     "rollup-plugin-commonjs": "^10.0.0",
     "rollup-plugin-livereload": "^1.0.0",
@@ -24,16 +36,4 @@
     "rollup-plugin-terser": "^5.1.2",
     "svelte": "^3.0.0"
   },
-  "dependencies": {
-    "dialog-polyfill": "^0.5.0",
-    "eslint": "^6.7.2",
-    "eslint-plugin-import": "^2.19.1",
-    "eslint-plugin-prettier": "^3.1.2",
-    "eslint-plugin-svelte3": "^2.7.3",
-    "page": "^1.11.5",
-    "prettier": "^1.19.1",
-    "prettier-plugin-svelte": "^0.7.0",
-    "sirv-cli": "^0.4.4",
-    "uuid": "^3.3.3"
-  }
 }
