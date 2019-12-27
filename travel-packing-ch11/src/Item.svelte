@@ -30,7 +30,9 @@
       {item.name}
     </span>
   {/if}
-  <button class="icon" on:click={() => dispatch('delete')}>&#x1F5D1;</button>
+  <button class="icon" data-testid="delete" on:click={() => dispatch('delete')}>
+    &#x1F5D1;
+  </button>
 </li>
 
 <style>
