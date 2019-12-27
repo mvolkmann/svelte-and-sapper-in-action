@@ -11,9 +11,7 @@ describe('Item', () => {
   afterEach(cleanup);
 
   test('should render', () => {
-    const {getByTestId, getByText} = render(Item, {
-      props: {categoryId, dnd, item}
-    });
+    const {getByTestId, getByText} = render(Item, {categoryId, dnd, item});
     const checkbox = document.querySelector('input[type="checkbox"]');
     expect(checkbox).not.toBeNull(); // found checkbox
     expect(getByText(item.name)); // found item name
@@ -21,9 +19,7 @@ describe('Item', () => {
   });
 
   test('should match snapshot', () => {
-    const {container} = render(Item, {
-      props: {categoryId, dnd, item}
-    });
+    const {container} = render(Item, {categoryId, dnd, item});
     expect(container).toMatchSnapshot();
   });
 });
