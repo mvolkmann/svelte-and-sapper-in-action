@@ -33,6 +33,7 @@ exports[`Category should match snapshot 1`] = `
       
           <input
             class="svelte-fin4p6"
+            data-testid="item-input"
             required=""
           />
         </label>

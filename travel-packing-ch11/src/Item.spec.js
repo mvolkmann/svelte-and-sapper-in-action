@@ -4,7 +4,7 @@ import Item from './Item.svelte';
 
 describe('Item', () => {
   const categoryId = 1;
-  const dnd = {drag: () => {}}; // no-op
+  const dnd = {};
   const item = {id: 2, name: 'socks', packed: false};
 
   // Unmounts any components mounted in the previous test.

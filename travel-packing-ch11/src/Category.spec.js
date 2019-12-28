@@ -6,28 +6,29 @@ import Category from './Category.svelte';
 describe('Category', () => {
   const PREDEFINED_ITEMS = 2;
 
-  const items = {
-    1: {id: 1, name: 'socks', packed: true},
-    2: {id: 2, name: 'shoes', packed: false}
-  };
-  const category = {id: 1, name: 'Clothes', items};
+  const category = {id: 1, name: 'Clothes', items: {}};
   const categories = [category];
   const dnd = {drag: () => {}}; // no-op
   const props = {categories, category, dnd, show: 'all'};
 
+  beforeEach(() => {
+    category.items = {
+      1: {id: 1, name: 'socks', packed: true},
+      2: {id: 2, name: 'shoes', packed: false}
+    };
+  });
+
   // Unmounts any components mounted in the previous test.
   afterEach(cleanup);
 
-  test('should match snapshot', async () => {
+  test('should match snapshot', () => {
     const {container} = render(Category, props);
-    //await tick();
-    //await sleep(1000);
     expect(container).toMatchSnapshot();
   });
 
   function expectItemCount(count) {
     return wait(() => {
-      // Each todo has an <li> root element.
+      // Each item has an <li> root element.
       const lis = document.querySelectorAll('li');
       expect(lis.length).toBe(count);
     });
@@ -42,38 +43,45 @@ describe('Category', () => {
     await expectItemCount(PREDEFINED_ITEMS);
   });
 
-  test.skip('should add an item', async () => {
+  test('should add an item', async () => {
     const {getByTestId, getByText} = render(Category, props);
 
-    const input = getByTestId('todo-input');
-    const value = 'buy milk';
+    const input = getByTestId('item-input');
+    const value = 't-shirts';
     fireEvent.input(input, {target: {value}});
-    fireEvent.click(getByText('Add'));
+    fireEvent.click(getByText('Add Item'));
 
     await expectItemCount(PREDEFINED_ITEMS + 1);
     expect(getByText(value));
   });
 
-  test.skip('should delete an item', async () => {
-    const {getAllByText, getByText} = render(Category, props);
-    const text = 'learn Svelte'; // first todo
-    expect(getByText(text));
+  test('should delete an item', async () => {
+    const {getAllByTestId} = render(Category, props);
 
-    const deleteBtns = getAllByText('Delete');
-    fireEvent.click(deleteBtns[0]); // deletes first todo
+    const deleteBtns = getAllByTestId('delete');
+    fireEvent.click(deleteBtns[0]); // deletes first item
     await expectItemCount(PREDEFINED_ITEMS - 1);
   });
 
-  test.skip('should toggle an item', async () => {
+  test('should toggle an item', async () => {
     const {container, getByText} = render(Category, props);
+
     const checkboxes = container.querySelectorAll('input[type="checkbox"]');
+    expect(checkboxes.length).toBe(2);
 
-    fireEvent.click(checkboxes[1]); // second todo
-    await tick();
-    expect(getByText('0 of 2 remaining'));
+    // The items are sorted so that "shoes" comes before "socks".
+    const [shoesCheckbox, socksCheckbox] = checkboxes;
 
-    fireEvent.click(checkboxes[0]); // first todo
+    expect(socksCheckbox.nextElementSibling.textContent).toBe('socks');
+    fireEvent.click(socksCheckbox);
     await tick();
-    expect(getByText('1 of 2 remaining'));
+    // Now nothing in this category is packed.
+    expect(getByText('2 of 2 remaining', {exact: false}));
+
+    expect(shoesCheckbox.nextElementSibling.textContent).toBe('shoes');
+    fireEvent.click(shoesCheckbox);
+    await tick();
+    // Now one item in this category is packed.
+    expect(getByText('1 of 2 remaining', {exact: false}));
   });
 });

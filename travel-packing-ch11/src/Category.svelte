@@ -65,7 +65,7 @@
       (show === 'unpacked' && !item.packed)
     );
   }
-  
+
   function spin(node, options) {
     const {easing, times = 1} = options;
     return {
@@ -111,7 +111,7 @@
   <form on:submit|preventDefault={addItem}>
     <label>
       New Item
-      <input required bind:value={itemName} />
+      <input data-testid="item-input" required bind:value={itemName} />
     </label>
     <button>Add Item</button>
   </form>
