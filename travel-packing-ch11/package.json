@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "scripts": {
     "build": "rollup -c",
+    "cy:open": "cypress open",
+    "cy:run": "cypress run",
     "dev": "rollup -c -w",
     "format": "prettier --write 'src/**/*.{css,html,js,svelte}'",
     "lint": "eslint --fix --quiet src --ext .js,.svelte",
@@ -22,6 +24,7 @@
     "@rollup/plugin-node-resolve": "^6.0.0",
     "@testing-library/svelte": "^1.11.0",
     "babel-jest": "^24.9.0",
+    "cypress": "^3.8.1",
     "eslint": "^6.8.0",
     "eslint-plugin-import": "^2.19.1",
     "eslint-plugin-prettier": "^3.1.2",

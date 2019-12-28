@@ -95,7 +95,7 @@
     <form on:submit|preventDefault={addCategory}>
       <label>
         New Category
-        <input required bind:value={categoryName} />
+        <input data-testid="category-name-input" required bind:value={categoryName} />
       </label>
       <button>Add Category</button>
       <button class="logout-btn" on:click={() => dispatch('logout')}>
