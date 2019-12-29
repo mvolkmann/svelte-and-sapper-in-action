@@ -11,5 +11,5 @@ export const basic = () => ({
     dnd: {},
     item: {id: 2, name: 'socks', packed: false}
   },
-  on: {delete: action('trashcan clicked')}
+  on: {delete: action('item deleted')}
 });

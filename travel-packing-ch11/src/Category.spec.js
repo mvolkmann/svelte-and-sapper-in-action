@@ -8,7 +8,7 @@ describe('Category', () => {
 
   const category = {id: 1, name: 'Clothes', items: {}};
   const categories = [category];
-  const dnd = {drag: () => {}}; // no-op
+  const dnd = {};
   const props = {categories, category, dnd, show: 'all'};
 
   beforeEach(() => {
