@@ -102,32 +102,32 @@ exports[`Category should match snapshot 1`] = `
     </section>
      
     <dialog
-      class="dialog svelte-bu5dqy"
+      class="dialog svelte-17hrmky"
     >
       <header
-        class="svelte-bu5dqy"
+        class="svelte-17hrmky"
       >
          
         <div
-          class="title svelte-bu5dqy"
+          class="title svelte-17hrmky"
         >
           Category
         </div>
          
         <button
-          class="close-btn svelte-bu5dqy"
+          class="close-btn svelte-17hrmky"
         >
           ✖
         </button>
       </header>
        
-      <main
-        class="svelte-bu5dqy"
+      <section
+        class="svelte-17hrmky"
       >
         <div>
           
         </div>
-      </main>
+      </section>
     </dialog>
   </div>
 </body>
