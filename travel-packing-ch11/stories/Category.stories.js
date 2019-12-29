@@ -14,5 +14,5 @@ export const basic = () => ({
     dnd: {},
     show: 'all'
   },
-  on: {delete: action('category deleted')}
+  on: {delete: action('category delete dispatched')}
 });

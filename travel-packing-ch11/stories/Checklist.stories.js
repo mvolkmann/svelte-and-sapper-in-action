@@ -1,3 +1,4 @@
+import {action} from '@storybook/addon-actions';
 import Checklist from '../src/Checklist.svelte';
 import StyleWrapper from './StyleWrapper.svelte';
 import '../public/global.css';
@@ -13,5 +14,6 @@ export const basic = () => ({
       height: 100vh;
       padding: 1rem
     `
-  }
+  },
+  on: {logout: action('logout dispatched')}
 });

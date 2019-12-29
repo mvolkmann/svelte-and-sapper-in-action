@@ -98,10 +98,10 @@
         <input data-testid="category-name-input" required bind:value={categoryName} />
       </label>
       <button>Add Category</button>
-      <button class="logout-btn" on:click={() => dispatch('logout')}>
-        Log Out
-      </button>
     </form>
+    <button class="logout-btn" on:click={() => dispatch('logout')}>
+      Log Out
+    </button>
     <p>
       Suggested categories include Backpack, Clothes,
       <br />

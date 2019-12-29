@@ -1,8 +1,10 @@
 <script>
   import Dialog from '../src/Dialog.svelte';
-  let content = 'This is some content.';
+  let content = 'This is some\\nlong content.';
   let dialog;
   let title = 'My Dialog Title';
+
+  $: parts = content.split('\\n');
 </script>
 
 <section>
@@ -14,24 +16,31 @@
   <label>
     Content
     <textarea bind:value={content} />
+    Insert \n to get multi-line content.
   </label>
 
   <button on:click={() => dialog.showModal()}>Show Dialog</button>
 
   <Dialog {title} bind:dialog={dialog} on:close={() => dialog.close()}>
-    {content}
+    {#each parts as part}
+      <div>{part}</div>
+    {/each}
   </Dialog>
 </section>
 
 <style>
   input, textarea {
-    margin-left: 1rem;
+    margin: 0 1rem 1rem 1rem;
   }
 
   label {
+    color: white;
     display: flex;
     align-items: flex-start;
-    margin-bottom: 1rem;
+  }
+
+  p {
+    color: white;
   }
 
   section {
