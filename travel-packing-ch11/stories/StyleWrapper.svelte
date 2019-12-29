@@ -4,5 +4,5 @@
 </script>
 
 <div style={style}>
-  <svelte:component this={component} />
+  <svelte:component this={component} on:login />
 </div>
