@@ -25,6 +25,8 @@
   }
 
   main {
+    background-color: cornflowerblue;
+    color: white;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
