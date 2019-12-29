@@ -9,9 +9,6 @@ export const basic = () => ({
   Component: StyleWrapper,
   props: {
     component: Login,
-    props: {
-      'on:login': null
-    },
     style: `
       background-color: cornflowerblue;
       height: 100vh;
