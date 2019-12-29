@@ -8,15 +8,21 @@ function login() {
   cy.contains('Password')
     .children('input')
     .type('password');
-  cy.contains('Login').click();
+  cy.get('button')
+    .contains('Login')
+    .click();
 }
 
 function addCategories() {
   login();
+
   cy.get('[data-testid=category-name-input]')
     .as('nameInput')
     .type('Clothes');
-  cy.contains('Add Category').click();
+  cy.get('button')
+    .contains('Add Category')
+    .click();
+
   cy.get('@nameInput').type('Toiletries{enter}');
 }
 
@@ -26,72 +32,86 @@ function addItems() {
     .first()
     .as('item-input-1')
     .type('socks');
-  cy.contains('Add Item')
+  cy.get('button')
+    .contains('Add Item')
     .first()
     .click();
   cy.get('@item-input-1').type('shoes{enter}');
-
-  cy.contains(/^Clothes$/)
-    //.then(el => el.css('border', 'solid red'))
-    .siblings('span')
-    .contains('2 of 2 remaining');
+  verifyStatus('Clothes', '2 of 2 remaining');
 
   cy.get('[data-testid=item-input]')
     .last()
     .type('razor{enter}');
+  verifyStatus('Toiletries', '1 of 1 remaining');
+}
 
-  cy.contains(/^Toiletries$/)
+function deleteCategory(categoryName) {
+  cy.contains(new RegExp(`^${categoryName}$`))
+    .siblings('button')
+    .click();
+}
+
+function deleteItem(itemName) {
+  cy.contains(new RegExp(`^${itemName}$`))
+    .siblings('button')
+    .click();
+}
+
+function togglePacked(itemName) {
+  cy.contains(new RegExp(`^${itemName}$`))
+    .siblings('input[type="checkbox"]')
+    .click();
+}
+
+function verifyStatus(categoryName, expectedStatus) {
+  cy.contains(new RegExp(`^${categoryName}$`))
+    // This is useful to verify that the correct element is found.
+    //.then(el => el.css('outline', 'solid red'))
     .siblings('span')
-    .contains('1 of 1 remaining');
+    .contains(expectedStatus);
 }
 
 describe('Travel Packing app', () => {
-  it.skip('should login', () => {
-    login();
-  });
+  it('should login', login);
 
-  it.skip('should add categories', () => {
-    addCategories();
-  });
+  it('should add categories', addCategories);
 
-  it.skip('should add items', () => {
+  it('should add items', addItems);
+
+  it('should toggle packed', () => {
     addItems();
+    verifyStatus('Clothes', '2 of 2 remaining');
+
+    togglePacked('shoes');
+    verifyStatus('Clothes', '1 of 2 remaining');
+
+    togglePacked('shoes');
+    verifyStatus('Clothes', '2 of 2 remaining');
   });
 
-  it('should toggle done', () => {
-    cy.visit(baseUrl);
-    cy.contains('1 of 2 remaining');
+  it('should delete item', () => {
+    addItems();
+    verifyStatus('Clothes', '2 of 2 remaining');
 
-    cy.get('input[type=checkbox]')
-      .first()
-      .as('cb1')
+    deleteItem('shoes');
+    verifyStatus('Clothes', '1 of 1 remaining');
+  });
+
+  it('should delete category', () => {
+    addItems();
+    verifyStatus('Toiletries', '1 of 1 remaining');
+
+    deleteItem('razor');
+    verifyStatus('Toiletries', '0 of 0 remaining');
+
+    deleteCategory('Toiletries');
+  });
+
+  it('should logout', () => {
+    addItems();
+    cy.get('button')
+      .contains('Log Out')
       .click();
-    cy.contains('2 of 2 remaining');
-
-    cy.get('@cb1').check();
-    cy.contains('1 of 2 remaining');
-  });
-
-  it.skip('should delete item', () => {
-    cy.visit(baseUrl);
-    cy.contains('1 of 2 remaining');
-
-    const itemText = 'learn Svelte'; // first item
-    cy.contains('ul', itemText);
-
-    cy.contains('Delete').click();
-    cy.contains('ul', itemText).should('not.exist');
-    cy.contains('1 of 1 remaining');
-  });
-
-  it.skip('should archive completed', () => {
-    cy.visit(baseUrl);
-
-    const itemText = 'learn Svelte'; // first item
-    cy.contains('ul', itemText);
-
-    cy.contains('Archive Completed').click();
-    cy.contains('ul', itemText).should('not.exist');
-    cy.contains('1 of 1 remaining');
+    cy.contains('Login');
   });
 });

@@ -108,23 +108,24 @@
       Last Minute, Medicines, Running Gear, and Toiletries.
     </p>
 
-    <div class="radios">
-      <label>Show</label>
-      <label>
-        <input name="show" type="radio" value="all" bind:group={show} />
-        All
-      </label>
-      <label>
-        <input name="show" type="radio" value="packed" bind:group={show} />
-        Packed
-      </label>
-      <label>
-        <input name="show" type="radio" value="unpacked" bind:group={show} />
-        Unpacked
-      </label>
-
-      <button class="clear" on:click={clearAllChecks}>Clear All Checks</button>
-    </div>
+    <fieldset>
+      <div>
+        <legend>Show</legend>
+        <label>
+          <input name="show" type="radio" value="all" bind:group={show} />
+          All
+        </label>
+        <label>
+          <input name="show" type="radio" value="packed" bind:group={show} />
+          Packed
+        </label>
+        <label>
+          <input name="show" type="radio" value="unpacked" bind:group={show} />
+          Unpacked
+        </label>
+        <button class="clear" on:click={clearAllChecks}>Clear All Checks</button>
+      </div>
+    </fieldset>
   </header>
 
   <div class="categories">
@@ -161,6 +162,25 @@
     margin-left: 2rem;
   }
 
+  fieldset {
+    border: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  fieldset > div {
+    display: flex;
+    align-items: center;
+  }
+
+  fieldset input {
+    margin-left: 1.5rem;
+  }
+
+  fieldset legend {
+    padding: 0;
+  }
+
   input[type='radio'] {
     --size: 1.5rem;
     height: var(--size);
@@ -171,18 +191,6 @@
     position: absolute;
     right: 1rem;
     top: 1rem;
-  }
-
-  .radios {
-    display: flex;
-    align-items: center;
-  }
-
-  .radios > label:not(:first-of-type) {
-    display: inline-flex;
-    align-items: center;
-
-    margin-left: 1rem;
   }
 
   section {

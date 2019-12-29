@@ -42,9 +42,9 @@
       <button class="close-btn" on:click={close}>&#x2716;</button>
     {/if}
   </header>
-  <main>
+  <section>
     <slot />
-  </main>
+  </section>
 </dialog>
 
 <style>
@@ -86,7 +86,7 @@
     width: 100%;
   }
 
-  main {
+  section {
     padding: 10px;
   }
 
