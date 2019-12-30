@@ -65,7 +65,7 @@
       (show === 'unpacked' && !item.packed)
     );
   }
-  
+
   function spin(node, options) {
     const {easing, times = 1} = options;
     return {
@@ -73,9 +73,11 @@
       css(t) {
         const eased = easing(t);
         const degrees = 360 * times; // through which to spin
-        return 'transform-origin: 50% 50%; ' +
+        return (
+          'transform-origin: 50% 50%; ' +
           `transform: scale(${eased}) ` +
-          `rotate(${eased * degrees}deg);`;
+          `rotate(${eased * degrees}deg);`
+        );
       }
     };
   }
@@ -125,8 +127,7 @@
           bind:item
           categoryId={category.id}
           {dnd}
-          on:delete={() => deleteItem(item)}
-        />
+          on:delete={() => deleteItem(item)} />
       </div>
     {:else}
       <div>This category does not contain any items yet.</div>

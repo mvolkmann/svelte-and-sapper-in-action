@@ -136,8 +136,7 @@
           dnd={dragAndDrop}
           {show}
           on:delete={() => deleteCategory(category)}
-          on:persist={persist}
-        />
+          on:persist={persist} />
       </div>
     {/each}
   </div>

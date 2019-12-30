@@ -95,7 +95,10 @@
     <form on:submit|preventDefault={addCategory}>
       <label>
         New Category
-        <input data-testid="category-name-input" required bind:value={categoryName} />
+        <input
+          data-testid="category-name-input"
+          required
+          bind:value={categoryName} />
       </label>
       <button>Add Category</button>
     </form>
@@ -123,7 +126,9 @@
           <input name="show" type="radio" value="unpacked" bind:group={show} />
           Unpacked
         </label>
-        <button class="clear" on:click={clearAllChecks}>Clear All Checks</button>
+        <button class="clear" on:click={clearAllChecks}>
+          Clear All Checks
+        </button>
       </div>
     </fieldset>
   </header>
@@ -137,8 +142,7 @@
           dnd={dragAndDrop}
           {show}
           on:delete={() => deleteCategory(category)}
-          on:persist={persist}
-        />
+          on:persist={persist} />
       </div>
     {/each}
   </div>

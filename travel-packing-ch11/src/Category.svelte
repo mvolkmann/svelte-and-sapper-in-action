@@ -73,9 +73,11 @@
       css(t) {
         const eased = easing(t);
         const degrees = 360 * times; // through which to spin
-        return 'transform-origin: 50% 50%; ' +
+        return (
+          'transform-origin: 50% 50%; ' +
           `transform: scale(${eased}) ` +
-          `rotate(${eased * degrees}deg);`;
+          `rotate(${eased * degrees}deg);`
+        );
       }
     };
   }
@@ -95,7 +97,7 @@
     hovering = false;
   }}
   ondragover="return false">
-  <h3>
+  <h2>
     {#if editing}
       <input
         bind:value={category.name}
@@ -106,7 +108,7 @@
     {/if}
     <span class="status">{status}</span>
     <button class="icon" on:click={() => dispatch('delete')}>&#x1F5D1;</button>
-  </h3>
+  </h2>
 
   <form on:submit|preventDefault={addItem}>
     <label>
@@ -125,8 +127,7 @@
           bind:item
           categoryId={category.id}
           {dnd}
-          on:delete={() => deleteItem(item)}
-        />
+          on:delete={() => deleteItem(item)} />
       </div>
     {:else}
       <div>This category does not contain any items yet.</div>
