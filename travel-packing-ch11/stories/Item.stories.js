@@ -4,12 +4,15 @@ import '../public/global.css';
 
 export default {title: 'Item'};
 
-export const basic = () => ({
+const getOptions = packed => ({
   Component: Item,
   props: {
     categoryId: 1,
     dnd: {},
-    item: {id: 2, name: 'socks', packed: false}
+    item: {id: 2, name: 'socks', packed}
   },
   on: {delete: action('item delete dispatched')}
 });
+
+export const unpacked = () => getOptions(false);
+export const packed = () => getOptions(true);
