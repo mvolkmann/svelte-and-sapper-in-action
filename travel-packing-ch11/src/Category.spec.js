@@ -77,12 +77,12 @@ describe('Category', () => {
     fireEvent.click(socksCheckbox);
     await tick();
     // Now nothing in this category is packed.
-    expect(getByText('2 of 2 remaining', {exact: false}));
+    expect(getByText('2 of 2 remaining'));
 
     expect(shoesCheckbox.nextElementSibling.textContent).toBe('shoes');
     fireEvent.click(shoesCheckbox);
     await tick();
     // Now one item in this category is packed.
-    expect(getByText('1 of 2 remaining', {exact: false}));
+    expect(getByText('1 of 2 remaining'));
   });
 });

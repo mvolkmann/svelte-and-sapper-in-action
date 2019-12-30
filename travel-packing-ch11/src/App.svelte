@@ -42,7 +42,8 @@
   .hero {
     --height: 7rem;
 
-    background-color: orange;
+    /* background-color: orange; fails accessibility tests */
+    background-color: #A3660A;
     color: white;
     font-size: 4rem;
     height: var(--height);
@@ -54,7 +55,8 @@
   }
 
   main {
-    background-color: cornflowerblue;
+    /* background-color: cornflowerblue; fails accessibility tests */
+    background-color: #3F6FDE;
     color: white;
     display: flex;
     flex-direction: column;

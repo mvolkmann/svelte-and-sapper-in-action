@@ -40,7 +40,7 @@
   }
 
   section {
-    background-color: cornflowerblue;
+    background-color: #3F6FDE;
     height: 100vh;
     padding: 1rem;
   }

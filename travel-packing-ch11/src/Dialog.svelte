@@ -78,7 +78,8 @@
     justify-content: space-between;
     align-items: center;
 
-    background-color: cornflowerblue;
+    /* background-color: cornflowerblue; fails accessibility tests */
+    background-color: #3F6FDE;
     box-sizing: border-box;
     color: white;
     font-weight: bold;

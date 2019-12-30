@@ -10,7 +10,7 @@ export const basic = () => ({
   props: {
     component: Checklist,
     style: `
-      background-color: cornflowerblue;
+      background-color: #3F6FDE;
       height: 100vh;
       padding: 1rem
     `
