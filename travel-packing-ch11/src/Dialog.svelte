@@ -79,7 +79,7 @@
     align-items: center;
 
     /* background-color: cornflowerblue; fails accessibility tests */
-    background-color: #3F6FDE;
+    background-color: #3f6fde;
     box-sizing: border-box;
     color: white;
     font-weight: bold;

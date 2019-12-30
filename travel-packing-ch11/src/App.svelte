@@ -43,7 +43,7 @@
     --height: 7rem;
 
     /* background-color: orange; fails accessibility tests */
-    background-color: #A3660A;
+    background-color: #a3660a;
     color: white;
     font-size: 4rem;
     height: var(--height);
@@ -56,7 +56,7 @@
 
   main {
     /* background-color: cornflowerblue; fails accessibility tests */
-    background-color: #3F6FDE;
+    background-color: #3f6fde;
     color: white;
     display: flex;
     flex-direction: column;
