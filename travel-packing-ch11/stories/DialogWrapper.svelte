@@ -39,10 +39,6 @@
     align-items: flex-start;
   }
 
-  p {
-    color: white;
-  }
-
   section {
     background-color: cornflowerblue;
     height: 100vh;
