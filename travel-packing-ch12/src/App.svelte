@@ -25,7 +25,7 @@
 <!-- <svelte:window on:hashchange={hashChange} /> -->
 
 <main>
-  <h1 class="hero">Travel Packing Checklist Plus</h1>
+  <h1 class="hero">Travel Packing Checklist</h1>
 
   <!-- <svelte:component
     this={component}
