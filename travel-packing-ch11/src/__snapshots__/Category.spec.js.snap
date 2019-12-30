@@ -4,49 +4,49 @@ exports[`Category should match snapshot 1`] = `
 <body>
   <div>
     <section
-      class="svelte-fin4p6"
+      class="svelte-m97krx"
       ondragover="return false"
     >
-      <h3
-        class="svelte-fin4p6"
+      <h2
+        class="svelte-m97krx"
       >
         <span>
           Clothes
         </span>
          
         <span
-          class="status svelte-fin4p6"
+          class="status svelte-m97krx"
         >
           1 of 2 remaining
         </span>
          
         <button
-          class="icon svelte-fin4p6"
+          class="icon svelte-m97krx"
         >
           🗑
         </button>
-      </h3>
+      </h2>
        
       <form>
         <label>
           New Item
       
           <input
-            class="svelte-fin4p6"
+            class="svelte-m97krx"
             data-testid="item-input"
             required=""
           />
         </label>
          
         <button
-          class="svelte-fin4p6"
+          class="svelte-m97krx"
         >
           Add Item
         </button>
       </form>
        
       <ul
-        class="svelte-fin4p6"
+        class="svelte-m97krx"
       >
         <div>
           <li

@@ -4,7 +4,7 @@ import {cleanup, fireEvent, render, wait} from '@testing-library/svelte';
 import Category from './Category.svelte';
 
 describe('Category', () => {
-  const PREDEFINED_ITEMS = 2;
+  let itemCount = 0;
 
   const category = {id: 1, name: 'Clothes', items: {}};
   const categories = [category];
@@ -16,6 +16,7 @@ describe('Category', () => {
       1: {id: 1, name: 'socks', packed: true},
       2: {id: 2, name: 'shoes', packed: false}
     };
+    itemCount = Object.keys(category.items).length;
   });
 
   // Unmounts any components mounted in the previous test.
@@ -40,7 +41,7 @@ describe('Category', () => {
     expect(getByText('1 of 2 remaining'));
     expect(getByText('New Item'));
     expect(getByText('Add Item'));
-    await expectItemCount(PREDEFINED_ITEMS);
+    await expectItemCount(itemCount);
   });
 
   test('should add an item', async () => {
@@ -51,7 +52,7 @@ describe('Category', () => {
     fireEvent.input(input, {target: {value}});
     fireEvent.click(getByText('Add Item'));
 
-    await expectItemCount(PREDEFINED_ITEMS + 1);
+    await expectItemCount(itemCount + 1);
     expect(getByText(value));
   });
 
@@ -60,7 +61,7 @@ describe('Category', () => {
 
     const deleteBtns = getAllByTestId('delete');
     fireEvent.click(deleteBtns[0]); // deletes first item
-    await expectItemCount(PREDEFINED_ITEMS - 1);
+    await expectItemCount(itemCount - 1);
   });
 
   test('should toggle an item', async () => {
