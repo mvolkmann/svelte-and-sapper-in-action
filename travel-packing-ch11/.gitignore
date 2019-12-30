@@ -2,5 +2,6 @@
 /cypress/videos
 /node_modules/
 /public/build/
+/storybook-static
 
 .DS_Store

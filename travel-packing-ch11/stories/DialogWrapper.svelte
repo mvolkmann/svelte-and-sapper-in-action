@@ -4,7 +4,7 @@
   let dialog;
   let title = 'My Dialog Title';
 
-  $: parts = content.split('\\n');
+  $: lines = content.split('\\n');
 </script>
 
 <section>
@@ -22,8 +22,8 @@
   <button on:click={() => dialog.showModal()}>Show Dialog</button>
 
   <Dialog {title} bind:dialog={dialog} on:close={() => dialog.close()}>
-    {#each parts as part}
-      <div>{part}</div>
+    {#each lines as line}
+      <div>{line}</div>
     {/each}
   </Dialog>
 </section>
