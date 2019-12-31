@@ -1,0 +1,18 @@
+{
+  "name": "for-zeit-now",
+  "version": "1.0.0",
+  "description": "tells ZEIT Now how to build the app",
+  "scripts": {
+    "build": "cd travel-packing-ch12; npm install; npm run build; cp -r public .."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mvolkmann/svelte-and-sapper-in-action.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mvolkmann/svelte-and-sapper-in-action/issues"
+  },
+  "homepage": "https://github.com/mvolkmann/svelte-and-sapper-in-action#readme"
+}
