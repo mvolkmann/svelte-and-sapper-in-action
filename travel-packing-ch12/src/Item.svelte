@@ -17,9 +17,13 @@
 <li
   draggable={true}
   on:dragstart={event => dnd.drag(event, categoryId, item.id)}>
-  <input type="checkbox" bind:checked={item.packed} />
+  <input
+    aria-label="Toggle Packed"
+    type="checkbox"
+    bind:checked={item.packed} />
   {#if editing}
     <input
+      aria-label="Edit Name"
       autofocus
       bind:value={item.name}
       on:blur={() => (editing = false)}
