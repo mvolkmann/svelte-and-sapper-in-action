@@ -22,8 +22,7 @@
   $: classNames = 'dialog' + (className ? ' ' + className : '');
 
   onMount(async () => {
-    const { default: dialogPolyfill } = await import('dialog-polyfill');
-    //if (dialogPolyfill) dialogPolyfill.registerDialog(dialog);
+    const {default: dialogPolyfill} = await import('dialog-polyfill');
     dialogPolyfill.registerDialog(dialog);
   });
 

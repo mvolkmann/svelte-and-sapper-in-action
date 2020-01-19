@@ -12,6 +12,7 @@
   let categoryName;
   let myDialog = null;
   let message = '';
+  let restored = false;
   let show = 'all';
 
   $: categoryArray = sortOnName(Object.values(categories));
@@ -71,23 +72,21 @@
     categories = categories;
   }
 
-  onMount(() => {
-    // Must do this before first call to persist.
-    restore();
+  onMount(restore); // Must do this before first call to persist.
 
-    // Any time categories changes, persist it to localStorage.
-    $: if (categories) persist();
-  });
+  // Any time categories changes, persist it to localStorage.
+  $: if (categories) persist();
 
   function persist() {
-    localStorage.setItem('travel-packing', JSON.stringify(categories));
+    if (process.browser && restored) {
+      localStorage.setItem('travel-packing', JSON.stringify(categories));
+    }
   }
 
   function restore() {
     const text = localStorage.getItem('travel-packing');
-    if (text && text !== '{}') {
-      categories = JSON.parse(text);
-    }
+    if (text && text !== '{}') categories = JSON.parse(text);
+    restored = true;
   }
 </script>
 
