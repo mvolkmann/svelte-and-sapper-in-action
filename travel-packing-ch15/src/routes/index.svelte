@@ -2,8 +2,7 @@
   let password = '';
   let username = '';
 
-  //const login = () => dispatch('login');
-  //const login = () => document.location.href = '/checklist';
+  const login = () => document.location.href = '/checklist';
   const signup = () => alert('You pressed Signup.');
 </script>
 
@@ -12,7 +11,7 @@
 </svelte:head>
 
 <section>
-  <form on:submit|preventDefault>
+  <form on:submit|preventDefault={login}>
     <label>
       Username
       <input required bind:value={username} />
@@ -22,7 +21,8 @@
       <input type="password" required bind:value={password} />
     </label>
     <div class="buttons">
-      <a class="button" href="/checklist">Login</a>
+      <button>Login</button>
+      <!-- <a class="button" href="/checklist">Login</a> -->
       <button type="button" on:click={signup}>Sign Up</button>
     </div>
   </form>

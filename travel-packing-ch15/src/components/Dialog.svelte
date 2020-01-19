@@ -1,5 +1,4 @@
 <script>
-  //import dialogPolyfill from 'dialog-polyfill';
   import {createEventDispatcher, onMount} from 'svelte';
 
   // Boolean that determines whether a close "X" should be displayed.
@@ -22,8 +21,10 @@
 
   $: classNames = 'dialog' + (className ? ' ' + className : '');
 
-  onMount(() => {
+  onMount(async () => {
+    const { default: dialogPolyfill } = await import('dialog-polyfill');
     //if (dialogPolyfill) dialogPolyfill.registerDialog(dialog);
+    dialogPolyfill.registerDialog(dialog);
   });
 
   function close() {
@@ -99,8 +100,10 @@
   }
 
   dialog::backdrop,
-  dialog + .backdrop {
-    /* a transparent shade of gray */
-    background-color: rgba(0, 0, 0, 0.4);
+  :global(dialog + .backdrop) {
+    /* Using important to override dialog-polyfill.css. */
+    /* This is a transparent shade of gray. */
+    /* Why is this ignored in Safari? */
+    background: rgba(0, 0, 0, 0.4) !important;
   }
 </style>

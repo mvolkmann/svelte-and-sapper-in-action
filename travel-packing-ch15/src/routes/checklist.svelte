@@ -1,4 +1,5 @@
 <script>
+  import {onMount} from 'svelte';
   import {flip} from 'svelte/animate';
   import Category from '../components/Category.svelte';
   import Dialog from '../components/Dialog.svelte';
@@ -70,11 +71,13 @@
     categories = categories;
   }
 
-  // Must do this before first call to persist.
-  restore();
+  onMount(() => {
+    // Must do this before first call to persist.
+    restore();
 
-  // Any time categories changes, persist it to localStorage.
-  $: if (categories) persist();
+    // Any time categories changes, persist it to localStorage.
+    $: if (categories) persist();
+  });
 
   function persist() {
     localStorage.setItem('travel-packing', JSON.stringify(categories));
