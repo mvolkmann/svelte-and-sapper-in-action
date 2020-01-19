@@ -14,7 +14,6 @@
   }
 </script>
 
-<svelte:options immutable />
 <li
   draggable={true}
   on:dragstart={event => dnd.drag(event, categoryId, item.id)}>
