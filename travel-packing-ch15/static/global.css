@@ -20,6 +20,14 @@ button.icon {
   margin-bottom: 0;
 }
 
+.button {
+  background-color: white;
+  border-radius: 10px;
+  color: gray;
+  padding: 1rem;
+  text-decoration: none;
+}
+
 input:disabled {
   color: #ccc;
 }

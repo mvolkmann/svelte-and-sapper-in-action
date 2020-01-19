@@ -1,11 +1,9 @@
 <script>
-  import {createEventDispatcher} from 'svelte';
   import {flip} from 'svelte/animate';
-  import Category from '../components/category.svelte';
-  import Dialog from '../components/dialog.svelte';
+  import Category from '../components/Category.svelte';
+  import Dialog from '../components/Dialog.svelte';
   import {getGuid, sortOnName} from '../util';
 
-  const dispatch = createEventDispatcher();
   const options = {duration: 700};
 
   let categoryArray = [];
@@ -106,9 +104,7 @@
       </label>
       <button>Add Category</button>
     </form>
-    <button class="logout-btn" on:click={() => dispatch('logout')}>
-      Log Out
-    </button>
+    <a class="button logout-btn" href="/">Log Out</a>
     <p>
       Suggested categories include Backpack, Clothes,
       <br />

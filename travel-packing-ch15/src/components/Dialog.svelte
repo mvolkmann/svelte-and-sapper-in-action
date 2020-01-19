@@ -1,6 +1,5 @@
-<svelte:options immutable />
 <script>
-  import dialogPolyfill from 'dialog-polyfill';
+  //import dialogPolyfill from 'dialog-polyfill';
   import {createEventDispatcher, onMount} from 'svelte';
 
   // Boolean that determines whether a close "X" should be displayed.
@@ -24,7 +23,7 @@
   $: classNames = 'dialog' + (className ? ' ' + className : '');
 
   onMount(() => {
-    if (dialogPolyfill) dialogPolyfill.registerDialog(dialog);
+    //if (dialogPolyfill) dialogPolyfill.registerDialog(dialog);
   });
 
   function close() {
@@ -34,6 +33,7 @@
   }
 </script>
 
+<svelte:options immutable />
 <dialog bind:this={dialog} class={classNames}>
   <header>
     {#if icon}{icon}{/if}

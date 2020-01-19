@@ -1,4 +1,3 @@
-<svelte:options immutable />
 <script>
   import {createEventDispatcher} from 'svelte';
 
@@ -15,6 +14,7 @@
   }
 </script>
 
+<svelte:options immutable />
 <li
   draggable={true}
   on:dragstart={event => dnd.drag(event, categoryId, item.id)}>
@@ -25,7 +25,6 @@
   {#if editing}
     <input
       aria-label="Edit Name"
-      autofocus
       bind:value={item.name}
       on:blur={() => (editing = false)}
       on:keydown={handleKey}
