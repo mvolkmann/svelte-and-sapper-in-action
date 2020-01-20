@@ -1,8 +1,10 @@
 <script>
+  import {goto} from '@sapper/app';
+
   let password = '';
   let username = '';
 
-  const login = () => document.location.href = '/checklist';
+  const login = () => goto('/checklist');
   const signup = () => alert('You pressed Signup.');
 </script>
 
