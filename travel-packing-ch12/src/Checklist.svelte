@@ -23,6 +23,7 @@
       event.dataTransfer.setData('text/plain', JSON.stringify(data));
     },
     drop(event, categoryId) {
+      event.preventDefault();
       const json = event.dataTransfer.getData('text/plain');
       const data = JSON.parse(json);
 

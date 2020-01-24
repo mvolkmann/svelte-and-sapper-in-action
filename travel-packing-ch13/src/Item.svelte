@@ -16,7 +16,8 @@
 
 <li
   draggable={true}
-  on:dragstart={event => dnd.drag(event, categoryId, item.id)}>
+  on:dragstart={event => dnd.drag(event, categoryId, item.id)}
+>
   <input
     aria-label="Toggle Packed"
     type="checkbox"
@@ -56,8 +57,10 @@
   }
 
   li {
-    display: flex;
-    align-items: center;
+    cursor: pointer;
+    display: inline-block;
+    /*display: flex;
+    align-items: center;*/
   }
 
   .packed-true {

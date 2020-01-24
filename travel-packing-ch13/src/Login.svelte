@@ -1,5 +1,6 @@
 <script>
   import {createEventDispatcher} from 'svelte';
+  //import Baskets from './Baskets.svelte';
 
   const dispatch = createEventDispatcher();
   let password = '';
@@ -13,6 +14,8 @@
   <title>Login</title>
 </svelte:head>
 
+<!-- <Baskets /> -->
+
 <section>
   <form on:submit|preventDefault={login}>
     <label>
@@ -24,7 +27,7 @@
       <input type="password" required bind:value={password} />
     </label>
     <div class="buttons">
-      <button>Login</button>
+      <button draggable={true}>Login</button>
       <button type="button" on:click={signup}>Sign Up</button>
     </div>
   </form>
