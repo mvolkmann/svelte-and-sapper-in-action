@@ -22,8 +22,10 @@
     type="checkbox"
     bind:checked={item.packed} />
   {#if editing}
+    <!-- svelte-ignore a11y-autofocus -->
     <input
       aria-label="Edit Name"
+      autofocus
       bind:value={item.name}
       on:blur={() => (editing = false)}
       on:keydown={handleKey}

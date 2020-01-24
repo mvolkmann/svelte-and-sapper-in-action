@@ -56,6 +56,7 @@
   </div>
   <br />
   <form on:submit|preventDefault>
+    <!-- svelte-ignore a11y-autofocus -->
     <input
       data-testid="todo-input"
       type="text"
