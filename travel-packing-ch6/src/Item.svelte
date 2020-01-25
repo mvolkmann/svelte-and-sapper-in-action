@@ -14,10 +14,7 @@
   }
 </script>
 
-<li
-  draggable={true}
-  on:dragstart={event => dnd.drag(event, categoryId, item.id)}
->
+<li>
   <input type="checkbox" bind:checked={item.packed} />
   {#if editing}
     <!-- svelte-ignore a11y-autofocus -->
@@ -28,7 +25,12 @@
       on:keydown={handleKey}
       type="text" />
   {:else}
-    <span class="packed-{item.packed}" on:click={() => (editing = true)}>
+    <span
+      class="packed-{item.packed}"
+      draggable={true}
+      on:dragstart={event => dnd.drag(event, categoryId, item.id)}
+      on:click={() => (editing = true)}
+    >
       {item.name}
     </span>
   {/if}

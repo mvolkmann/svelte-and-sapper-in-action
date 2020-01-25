@@ -14,10 +14,7 @@
   }
 </script>
 
-<li
-  draggable={true}
-  on:dragstart={event => dnd.drag(event, categoryId, item.id)}
->
+<li>
   <input
     aria-label="Toggle Packed"
     type="checkbox"
@@ -32,7 +29,12 @@
       on:keydown={handleKey}
       type="text" />
   {:else}
-    <span class="packed-{item.packed}" on:click={() => (editing = true)}>
+    <span
+      class="packed-{item.packed}"
+      draggable={true}
+      on:dragstart={event => dnd.drag(event, categoryId, item.id)}
+      on:click={() => (editing = true)}
+    >
       {item.name}
     </span>
   {/if}
