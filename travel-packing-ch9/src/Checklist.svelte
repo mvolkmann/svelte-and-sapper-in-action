@@ -3,9 +3,11 @@
   import {flip} from 'svelte/animate';
   import Category from './Category.svelte';
   import Dialog from './Dialog.svelte';
-  import {getGuid, sortOnName} from './util';
+  import {getGuid, isSafari, sortOnName} from './util';
 
   const dispatch = createEventDispatcher();
+  const inSafari = isSafari();
+  console.log('Checklist.svelte x: inSafari =', inSafari);
   const options = {duration: 700};
 
   let categoryArray = [];
@@ -129,6 +131,8 @@
   </header>
 
   <div class="categories">
+    <!-- In Safari you cannot see the item being dragged
+         if the Category is wrapped in a div. -->
     {#each categoryArray as category (category.id)}
       <div class="animate" animate:flip={options}>
         <Category
