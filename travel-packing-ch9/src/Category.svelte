@@ -1,8 +1,5 @@
 <script>
   import {createEventDispatcher} from 'svelte';
-  import {flip} from 'svelte/animate';
-  import {linear} from 'svelte/easing';
-  import {scale} from 'svelte/transition';
   import Dialog from './Dialog.svelte';
   import Item from './Item.svelte';
   import {getGuid, sortOnName} from './util';
@@ -13,8 +10,6 @@
   export let show;
 
   const dispatch = createEventDispatcher();
-  const options = {duration: 700, easing: linear, times: 2};
-
   let myDialog = null;
   let editing = false;
   let hovering = false;
@@ -65,28 +60,10 @@
       (show === 'unpacked' && !item.packed)
     );
   }
-
-  function spin(node, options) {
-    const {easing, times = 1} = options;
-    return {
-      ...options,
-      css(t) {
-        const eased = easing(t);
-        const degrees = 360 * times; // through which to spin
-        return (
-          'transform-origin: 50% 50%; ' +
-          `transform: scale(${eased}) ` +
-          `rotate(${eased * degrees}deg);`
-        );
-      }
-    };
-  }
 </script>
 
 <section
   class:hover={hovering}
-  in:scale={options}
-  out:spin={options}
   on:dragenter={() => (hovering = true)}
   on:dragleave={event => {
     const {localName} = event.target;
@@ -120,15 +97,13 @@
 
   <ul>
     {#each itemsToShow as item (item.id)}
-      <div animate:flip>
-        <!-- This bind causes the category object to update
-            when the item packed value is toggled. -->
-        <Item
-          bind:item
-          categoryId={category.id}
-          {dnd}
-          on:delete={() => deleteItem(item)} />
-      </div>
+      <!-- This bind causes the category object to update
+           when the item packed value is toggled. -->
+      <Item
+        bind:item
+        categoryId={category.id}
+        {dnd}
+        on:delete={() => deleteItem(item)} />
     {:else}
       <div>This category does not contain any items yet.</div>
     {/each}
