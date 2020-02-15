@@ -33,8 +33,7 @@
       class="packed-{item.packed}"
       draggable={true}
       on:dragstart={event => dnd.drag(event, categoryId, item.id)}
-      on:click={() => (editing = true)}
-    >
+      on:click={() => (editing = true)}>
       {item.name}
     </span>
   {/if}
@@ -60,8 +59,10 @@
   }
 
   li {
-    display: flex;
-    align-items: center;
+    cursor: pointer;
+    display: inline-block;
+    /*display: flex;
+    align-items: center;*/
   }
 
   .packed-true {

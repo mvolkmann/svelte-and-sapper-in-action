@@ -9,14 +9,12 @@
   <title>{status}</title>
 </svelte:head>
 
-{#if status === 404}
-  <p>No such page found!</p>
-{:else}
-  <h1>Status: {status}</h1>
-  <p>{error.message}</p>
-  {#if dev && error.stack}
-    <pre>{error.stack}</pre>
-  {/if}
+<h1>{status}</h1>
+
+<p>{error.message}</p>
+
+{#if dev && error.stack}
+  <pre>{error.stack}</pre>
 {/if}
 
 <style>

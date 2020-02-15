@@ -12,6 +12,8 @@
   <title>Login</title>
 </svelte:head>
 
+<!-- <Baskets /> -->
+
 <section>
   <form on:submit|preventDefault={login}>
     <label>
@@ -23,8 +25,7 @@
       <input type="password" required bind:value={password} />
     </label>
     <div class="buttons">
-      <button>Login</button>
-      <!-- <a class="button" href="/checklist">Login</a> -->
+      <button draggable={true}>Login</button>
       <button type="button" on:click={signup}>Sign Up</button>
     </div>
   </form>

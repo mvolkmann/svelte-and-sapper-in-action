@@ -1,6 +1,7 @@
 <script>
   import {onMount} from 'svelte';
   import {flip} from 'svelte/animate';
+
   import Category from '../components/Category.svelte';
   import Dialog from '../components/Dialog.svelte';
   import {getGuid, sortOnName} from '../util';
@@ -15,14 +16,16 @@
   let restored = false;
   let show = 'all';
 
+  onMount(restore); // Must do before first call to persist.
+
   $: categoryArray = sortOnName(Object.values(categories));
 
   let dragAndDrop = {
-    drag(event, categoryId, itemId) {
+    drag: (event, categoryId, itemId) => {
       const data = {categoryId, itemId};
       event.dataTransfer.setData('text/plain', JSON.stringify(data));
     },
-    drop(event, categoryId) {
+    drop: (event, categoryId) => {
       event.preventDefault();
       const json = event.dataTransfer.getData('text/plain');
       const data = JSON.parse(json);
@@ -72,8 +75,6 @@
     delete categories[category.id];
     categories = categories;
   }
-
-  onMount(restore); // Must do this before first call to persist.
 
   // Any time categories changes, persist it to localStorage.
   $: if (categories) persist();
