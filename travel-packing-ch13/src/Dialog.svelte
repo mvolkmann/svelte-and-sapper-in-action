@@ -1,4 +1,3 @@
-<svelte:options immutable />
 <script>
   import dialogPolyfill from 'dialog-polyfill';
   import {createEventDispatcher, onMount} from 'svelte';

@@ -59,13 +59,11 @@
     border: solid lightgray 1px;
   }
 
-  label > span {
-    display: none;
-  }
-
   li {
-    display: flex;
-    align-items: center;
+    cursor: pointer;
+    display: inline-block;
+    /*display: flex;
+    align-items: center;*/
   }
 
   .packed-true {

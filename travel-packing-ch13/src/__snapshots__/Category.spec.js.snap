@@ -51,15 +51,16 @@ exports[`Category should match snapshot 1`] = `
         <div>
           <li
             class="svelte-ft3yg2"
-            draggable="true"
           >
             <input
+              aria-label="Toggle Packed"
               class="svelte-ft3yg2"
               type="checkbox"
             />
              
             <span
               class="packed-false svelte-ft3yg2"
+              draggable="true"
             >
               shoes
             </span>
@@ -76,15 +77,16 @@ exports[`Category should match snapshot 1`] = `
         <div>
           <li
             class="svelte-ft3yg2"
-            draggable="true"
           >
             <input
+              aria-label="Toggle Packed"
               class="svelte-ft3yg2"
               type="checkbox"
             />
              
             <span
               class="packed-true svelte-ft3yg2"
+              draggable="true"
             >
               socks
             </span>
@@ -102,27 +104,27 @@ exports[`Category should match snapshot 1`] = `
     </section>
      
     <dialog
-      class="dialog svelte-17hrmky"
+      class="dialog svelte-1giozc5"
     >
       <header
-        class="svelte-17hrmky"
+        class="svelte-1giozc5"
       >
          
         <div
-          class="title svelte-17hrmky"
+          class="title svelte-1giozc5"
         >
           Category
         </div>
          
         <button
-          class="close-btn svelte-17hrmky"
+          class="close-btn svelte-1giozc5"
         >
           ✖
         </button>
       </header>
        
       <section
-        class="svelte-17hrmky"
+        class="svelte-1giozc5"
       >
         <div>
           

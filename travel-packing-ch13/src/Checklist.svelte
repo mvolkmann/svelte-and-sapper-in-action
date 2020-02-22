@@ -18,11 +18,11 @@
   $: categoryArray = sortOnName(Object.values(categories));
 
   let dragAndDrop = {
-    drag: (event, categoryId, itemId) => {
+    drag(event, categoryId, itemId) {
       const data = {categoryId, itemId};
       event.dataTransfer.setData('text/plain', JSON.stringify(data));
     },
-    drop: (event, categoryId) => {
+    drop(event, categoryId) {
       event.preventDefault();
       const json = event.dataTransfer.getData('text/plain');
       const data = JSON.parse(json);
@@ -90,10 +90,6 @@
     }
   }
 </script>
-
-<svelte:head>
-  <title>Checklist</title>
-</svelte:head>
 
 <section>
   <header>
