@@ -46,17 +46,43 @@
       const data = {categoryId, itemId};
       event.dataTransfer.setData('text/plain', JSON.stringify(data));
     },
-    drop: (event, categoryId) => {
+    drop: async (event, newCategoryId) => {
       event.preventDefault();
       const json = event.dataTransfer.getData('text/plain');
       const data = JSON.parse(json);
 
-      const category = categoryMap[data.categoryId];
-      const item = category.items[data.itemId];
-      delete category.items[data.itemId];
+      try {
+        const oldCategory = categoryMap[data.categoryId];
+        const item = oldCategory.items[data.itemId];
 
-      categoryMap[categoryId].items[data.itemId] = item;
-      categoryMap = categoryMap; // triggers update
+        // Delete the item from the old category.
+        let options = {
+          method: 'DELETE',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify(item)
+        };
+        let path = `categories/${oldCategory._id}/items/${item.id}.json`;
+        let res = await fetch(path, options);
+        if (!res.ok) throw new Error(await res.text());
+
+        // Add the item to the new category.
+        const newCategory = categoryMap[newCategoryId];
+        options = {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify(item)
+        };
+        path = `categories/${newCategory._id}/items.json`;
+        res = await fetch(path, options);
+        if (!res.ok) throw new Error(await res.text());
+
+        // Update the UI.
+        delete oldCategory.items[data.itemId];
+        newCategory.items[item.id] = item;
+        categoryMap = categoryMap; // triggers update
+      } catch (e) {
+        console.error('checklist.svelte drop:', e.message);
+      }
     }
   };
 

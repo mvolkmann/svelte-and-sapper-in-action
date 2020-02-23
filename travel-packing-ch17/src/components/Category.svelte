@@ -130,7 +130,7 @@
     if (localName === 'section') hovering = false;
   }}
   on:drop={event => {
-    dnd.drop(event, category.id);
+    dnd.drop(event, category._id);
     hovering = false;
   }}
   ondragover="return false">
@@ -162,7 +162,7 @@
             when the item packed value is toggled. -->
         <Item
           bind:item
-          categoryId={category.id}
+          categoryId={category._id}
           {dnd}
           on:delete={() => deleteItem(item)}
           on:persist={() => saveItem(item)} />
