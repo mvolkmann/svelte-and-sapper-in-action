@@ -80,8 +80,12 @@
         ? `categories/${category._id}/items.json`
         : `categories/${category._id}/items/${item.id}.json`;
       const res = await fetch(path, options);
-      //TODO: How can you get an error message?
-      if (!res.ok) throw new Error(res);
+      if (!res.ok) {
+        //TODO: How can you get an error message?
+        const message = await res.text();
+        console.log('Category.svelte saveItem: message =', message);
+        throw new Error(message);
+      }
 
       category.items[item.id] = item;
       categoryMap = categoryMap; // triggers update

@@ -1,4 +1,5 @@
 const {ObjectId} = require('mongodb');
+const send = require('@polka/send-type');
 import {getCollection} from '../../../_helpers';
 
 // This adds an item to a category.
@@ -15,6 +16,6 @@ export async function post(req, res) {
     res.end();
   } catch (e) {
     console.error('categories/[categoryId]/items/index.json.js post:', e);
-    res.status(500).json({error: e.message});
+    send(res, 500, {error: e});
   }
 }

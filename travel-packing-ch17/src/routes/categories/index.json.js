@@ -1,3 +1,4 @@
+const send = require('@polka/send-type');
 import {getCollection} from '../_helpers';
 
 // This gets all the categories.
@@ -8,7 +9,7 @@ export async function get(req, res) {
     res.end(JSON.stringify(result));
   } catch (e) {
     console.error('categories/index.json.js get:', e);
-    res.status(500).json({error: e.message});
+    send(res, 500, {error: e});
   }
 }
 
@@ -22,6 +23,6 @@ export async function post(req, res) {
     res.end(JSON.stringify(obj));
   } catch (e) {
     console.error('categories/index.json.js post:', e);
-    res.status(500).json({error: e.message});
+    send(res, 500, {error: e});
   }
 }

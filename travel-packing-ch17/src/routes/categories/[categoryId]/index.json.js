@@ -1,3 +1,4 @@
+const send = require('@polka/send-type');
 const {ObjectId} = require('mongodb');
 import {getCollection} from '../../_helpers';
 
@@ -8,13 +9,13 @@ export async function del(req, res) {
     const collection = await getCollection();
     const result = await collection.deleteOne({_id: ObjectId(categoryId)});
     if (result.deletedCount === 0) {
-      res.status(404).send(`no category with id ${categoryId} found`);
+      send(res, 404, `no category with id ${categoryId} found`);
     } else {
       res.end();
     }
   } catch (e) {
     console.error('categories/[categoryId]/index.json.js del:', e);
-    res.status(500).json({error: e.message});
+    send(res, 500, {error: e});
   }
 }
 
@@ -38,6 +39,6 @@ export async function put(req, res) {
     res.end(JSON.stringify(obj));
   } catch (e) {
     console.error('categories/[categoryId]/index.json.js put:', e);
-    res.status(500).json({error: e.message});
+    send(res, 500, {error: e});
   }
 }
