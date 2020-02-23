@@ -107,7 +107,7 @@
       <span on:click={() => (editing = true)}>{category.name}</span>
     {/if}
     <span class="status">{status}</span>
-    <button draggable={true} class="icon" on:click={() => dispatch('delete')}>
+    <button class="icon" on:click={() => dispatch('delete')}>
       &#x1F5D1;
     </button>
   </h2>

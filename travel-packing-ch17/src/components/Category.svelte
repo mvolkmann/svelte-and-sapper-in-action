@@ -5,9 +5,9 @@
   import {scale} from 'svelte/transition';
   import Dialog from './Dialog.svelte';
   import Item from './Item.svelte';
-  import {getGuid, sortOnName} from './util';
+  import {getGuid, sortOnName} from '../util';
 
-  export let categories;
+  export let categoryMap;
   export let category;
   export let dnd;
   export let show;
@@ -28,34 +28,67 @@
   $: status = `${remaining} of ${total} remaining`;
   $: itemsToShow = sortOnName(items.filter(i => shouldShow(show, i)));
 
-  function addItem() {
-    const duplicate = Object.values(categories).some(cat =>
-      Object.values(cat.items).some(item => item.name === itemName)
-    );
-    if (duplicate) {
-      message = `The item "${itemName}" already exists.`;
-      myDialog.showModal();
-      return;
+  async function deleteItem(item) {
+    try {
+      const options = {method: 'DELETE'};
+      const path = `categories/${category._id}/items/${item.id}.json`;
+      const res = await fetch(path, options);
+      if (!res.ok) throw new Error('failed to delete item with id ' + item.id);
+
+      delete category.items[item.id];
+      category = category; // triggers update
+    } catch (e) {
+      console.error('checklist.svelte deleteCategory:', e.message);
     }
-
-    const {items} = category;
-    const id = getGuid();
-    items[id] = {id, name: itemName, packed: false};
-    category.items = items;
-    itemName = '';
-
-    dispatch('persist');
   }
 
-  function deleteItem(item) {
-    delete category.items[item.id];
-    category = category; // triggers update
-
+  function handleBlur() {
+    editing = false;
+    // Signal to checklist.svelte that it should save the category.
     dispatch('persist');
   }
 
   function handleKey(event) {
     if (event.code === 'Enter') event.target.blur();
+  }
+
+  async function saveItem(item) {
+    const isNewItem = !item;
+
+    if (isNewItem) {
+      // The name cannot match that of any existing item in any category.
+      const duplicate = Object.values(categoryMap).some(cat =>
+        Object.values(cat.items).some(item => item.name === itemName)
+      );
+      if (duplicate) {
+        message = `The item "${itemName}" already exists.`;
+        myDialog.showModal();
+        return;
+      }
+
+      item = {id: getGuid(), name: itemName, packed: false};
+    }
+
+    try {
+      const options = {
+        method: isNewItem ? 'POST' : 'PUT',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(item)
+      };
+
+      const path = isNewItem
+        ? `categories/${category._id}/items.json`
+        : `categories/${category._id}/items/${item.id}.json`;
+      const res = await fetch(path, options);
+      //TODO: How can you get an error message?
+      if (!res.ok) throw new Error(res);
+
+      category.items[item.id] = item;
+      categoryMap = categoryMap; // triggers update
+      itemName = ''; // clears input
+    } catch (e) {
+      console.error('checklist.svelte saveItem:', e.message);
+    }
   }
 
   function shouldShow(show, item) {
@@ -101,7 +134,7 @@
     {#if editing}
       <input
         bind:value={category.name}
-        on:blur={() => (editing = false)}
+        on:blur={handleBlur}
         on:keypress={handleKey} />
     {:else}
       <span on:click={() => (editing = true)}>{category.name}</span>
@@ -110,7 +143,7 @@
     <button class="icon" on:click={() => dispatch('delete')}>&#x1F5D1;</button>
   </h2>
 
-  <form on:submit|preventDefault={addItem}>
+  <form on:submit|preventDefault={() => saveItem()}>
     <label>
       New Item
       <input data-testid="item-input" required bind:value={itemName} />
@@ -127,7 +160,8 @@
           bind:item
           categoryId={category.id}
           {dnd}
-          on:delete={() => deleteItem(item)} />
+          on:delete={() => deleteItem(item)}
+          on:persist={() => saveItem(item)} />
       </div>
     {:else}
       <div>This category does not contain any items yet.</div>
