@@ -1,6 +1,6 @@
 const {ObjectId} = require('mongodb');
 const send = require('@polka/send-type');
-import {getCollection} from '../../../_helpers';
+import {getCollection} from '../../_helpers';
 
 // This adds an item to a category.
 export async function post(req, res) {

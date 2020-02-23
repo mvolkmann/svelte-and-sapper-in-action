@@ -1,6 +1,6 @@
 const send = require('@polka/send-type');
 const {ObjectId} = require('mongodb');
-import {getCollection} from '../../_helpers';
+import {getCollection} from '../_helpers';
 
 // This deletes a category.
 export async function del(req, res) {

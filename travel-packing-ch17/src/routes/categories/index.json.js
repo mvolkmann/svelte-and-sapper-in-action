@@ -1,5 +1,5 @@
 const send = require('@polka/send-type');
-import {getCollection} from '../_helpers';
+import {getCollection} from './_helpers';
 
 // This gets all the categories.
 export async function get(req, res) {
