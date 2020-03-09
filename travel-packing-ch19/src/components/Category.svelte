@@ -5,7 +5,7 @@
   import {scale} from 'svelte/transition';
   import Dialog from './Dialog.svelte';
   import Item from './Item.svelte';
-  import {getGuid, sortOnName} from '../util';
+  import {fetchPlus, getGuid, sortOnName} from '../util';
 
   export let categoryMap;
   export let category;
@@ -32,12 +32,14 @@
     try {
       const options = {method: 'DELETE'};
       const path = `categories/${category._id}/items/${item.id}.json`;
-      const res = await fetch(path, options);
+      const res = await fetchPlus(path, options);
+      if (res.offline) return;
       if (!res.ok) throw new Error('failed to delete item with id ' + item.id);
 
       delete category.items[item.id];
       category = category; // triggers update
     } catch (e) {
+      console.error('checklist.svelte deleteItem: e =', e);
       console.error('checklist.svelte deleteItem:', e.message);
     }
   }
@@ -79,7 +81,8 @@
       const path = isNewItem
         ? `categories/${category._id}/items.json`
         : `categories/${category._id}/items/${item.id}.json`;
-      const res = await fetch(path, options);
+      const res = await fetchPlus(path, options);
+      if (res.offline) return;
       if (!res.ok) {
         //TODO: How can you get an error message?
         const message = await res.text();

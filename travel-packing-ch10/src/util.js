@@ -1,7 +1,7 @@
-import uuidv1 from 'uuid/v1';
+import {v4 as uuidv4} from 'uuid';
 
 export function getGuid() {
-  return uuidv1();
+  return uuidv4();
 }
 
 export function isSafari() {
