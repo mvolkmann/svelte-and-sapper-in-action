@@ -7,6 +7,7 @@
 
   const dispatch = createEventDispatcher();
   let editing = false;
+  let online = true;
 
   function handleBlur() {
     editing = false;
@@ -20,9 +21,12 @@
   }
 </script>
 
+<svelte:window bind:online={online} />
+
 <li>
   <input
     aria-label="Toggle Packed"
+    disabled={!online}
     type="checkbox"
     bind:checked={item.packed}
     on:change={() => dispatch('persist')} />
@@ -40,7 +44,7 @@
       class="packed-{item.packed}"
       draggable={true}
       on:dragstart={event => dnd.drag(event, categoryId, item.id)}
-      on:click={() => (editing = true)}>
+      on:click={() => (editing = online)}>
       {item.name}
     </span>
   {/if}

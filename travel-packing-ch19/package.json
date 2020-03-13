@@ -7,7 +7,6 @@
     "export": "sapper export --legacy",
     "format": "prettier --write 'src/**/*.{css,html,js,svelte}'",
     "lint": "eslint --fix --quiet src --ext .js,.svelte",
-    "reinstall": "rm -rf package-lock.json node_modules && npm install",
     "start": "node __sapper__/build",
     "cy:run": "cypress run",
     "cy:open": "cypress open",
@@ -16,11 +15,11 @@
   "dependencies": {
     "@polka/send-type": "^0.5.2",
     "body-parser": "^1.19.0",
-    "compression": "^1.7.4",
+    "compression": "^1.7.1",
     "dialog-polyfill": "^0.5.0",
-    "mongodb": "^3.5.4",
+    "mongodb": "^3.5.3",
     "polka": "next",
-    "sirv": "^0.4.2",
+    "sirv": "^0.4.0",
     "uuid": "^7.0.2"
   },
   "devDependencies": {
@@ -42,7 +41,7 @@
     "rollup-plugin-babel": "^4.0.2",
     "rollup-plugin-svelte": "^5.0.1",
     "rollup-plugin-terser": "^4.0.4",
-    "sapper": "^0.27.10",
-    "svelte": "^3.19.2"
+    "sapper": "^0.27.0",
+    "svelte": "^3.0.0"
   }
 }

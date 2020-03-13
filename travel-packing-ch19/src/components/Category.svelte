@@ -21,6 +21,7 @@
   let itemName = '';
   let items = [];
   let message = '';
+  let online = true;
 
   $: items = Object.values(category.items);
   $: remaining = items.filter(item => !item.packed).length;
@@ -39,7 +40,6 @@
       delete category.items[item.id];
       category = category; // triggers update
     } catch (e) {
-      console.error('checklist.svelte deleteItem: e =', e);
       console.error('checklist.svelte deleteItem:', e.message);
     }
   }
@@ -123,6 +123,8 @@
   }
 </script>
 
+<svelte:window bind:online={online} />
+
 <section
   class:hover={hovering}
   in:scale={options}
@@ -144,7 +146,7 @@
         on:blur={handleBlur}
         on:keypress={handleKey} />
     {:else}
-      <span on:click={() => (editing = true)}>{category.name}</span>
+      <span on:click={() => (editing = online)}>{category.name}</span>
     {/if}
     <span class="status">{status}</span>
     <button class="icon" on:click={() => dispatch('delete')}>&#x1F5D1;</button>

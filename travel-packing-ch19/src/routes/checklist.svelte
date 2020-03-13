@@ -1,8 +1,7 @@
 <script context="module">
-  export async function preload() {
+  export async function preload(page) {
     try {
-      const res = await this.fetch('categories.json');
-      if (res.offline) return;
+      const res = await this.fetch(`https://${page.host}/categories.json`);
       if (res.ok) {
         const categories = await res.json();
 
@@ -38,6 +37,7 @@
   let categoryName;
   let myDialog = null;
   let message = '';
+  let online = true;
   let show = 'all';
 
   $: categoryArray = sortOnName(Object.values(categoryMap));
@@ -160,6 +160,8 @@
   }
 </script>
 
+<svelte:window bind:online={online} />
+
 <svelte:head>
   <title>Checklist</title>
 </svelte:head>
@@ -198,7 +200,7 @@
           <input name="show" type="radio" value="unpacked" bind:group={show} />
           Unpacked
         </label>
-        <button class="clear" on:click={clearAllChecks}>
+        <button class="clear" disabled={!online} on:click={clearAllChecks}>
           Clear All Checks
         </button>
       </div>

@@ -1,17 +1,18 @@
 <script>
   let mainElement;
   let online = true;
-  $: title = 'Travel Packing Checklist' + (online ? '' : ' Offline');
+  $: title = 'Travel Packing Checklist' + (online ? '' : ' Offline'); <1>
   $: if (mainElement) {
-    mainElement.style.setProperty(
+    mainElement.style.setProperty( <2>
       '--main-bg-color',
       online ? '#3f6fde' : 'gray'
     ); 
   }
 </script>
 
-<svelte:window bind:online={online} />
-<main bind:this={mainElement}>
+<svelte:window bind:online={online} /> <3>
+
+<main bind:this={mainElement}> <4>
   <h1 class="hero">{title}</h1>
   <slot />
 </main>
@@ -33,8 +34,7 @@
   }
 
   main {
-    --main-bg-color: #3f6fde; 
-    /* background-color: cornflowerblue; fails accessibility tests */
+    --main-bg-color: #3f6fde; /* shade of blue */
     background-color: var(--main-bg-color);
     color: white;
     display: flex;
