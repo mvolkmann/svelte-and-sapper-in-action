@@ -96,7 +96,7 @@
     dnd.drop(event, category.id);
     hovering = false;
   }}
-  ondragover="return false">
+  on:dragover|preventDefault>
   <h2>
     {#if editing}
       <input

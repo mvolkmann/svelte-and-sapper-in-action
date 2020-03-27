@@ -73,7 +73,7 @@
     dnd.drop(event, category.id);
     hovering = false;
   }}
-  ondragover="return false"
+  on:dragover|preventDefault
 >
   <h3>
     {#if editing}

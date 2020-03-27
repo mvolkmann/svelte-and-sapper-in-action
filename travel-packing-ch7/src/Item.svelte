@@ -41,11 +41,13 @@
   button {
     background-color: transparent;
     border: none;
+    margin-bottom: 0;
   }
 
   input[type='checkbox'] {
     --size: 1.5rem;
     height: var(--size);
+    margin-bottom: 0;
     width: var(--size);
   }
 
