@@ -123,7 +123,7 @@
   }
 </script>
 
-<svelte:window bind:online={online} />
+<svelte:window bind:online />
 
 <section
   class:hover={hovering}

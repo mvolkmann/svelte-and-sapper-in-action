@@ -21,7 +21,7 @@
   }
 </script>
 
-<svelte:window bind:online={online} />
+<svelte:window bind:online />
 
 <li>
   <input
