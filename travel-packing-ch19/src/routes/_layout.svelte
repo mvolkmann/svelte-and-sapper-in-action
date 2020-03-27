@@ -10,7 +10,7 @@
   }
 </script>
 
-<svelte:window bind:online={online} /> <3>
+<svelte:window bind:online /> <3>
 
 <main bind:this={mainElement}> <4>
   <h1 class="hero">{title}</h1>
