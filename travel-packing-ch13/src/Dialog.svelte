@@ -99,9 +99,8 @@
 
   dialog::backdrop,
   :global(dialog + .backdrop) {
-    /* Using important to override dialog-polyfill.css. */
     /* This is a transparent shade of gray. */
     /* Why is this ignored in Safari? */
-    background: rgba(0, 0, 0, 0.4) !important;
+    background: rgba(0, 0, 0, 0.4);
   }
 </style>
