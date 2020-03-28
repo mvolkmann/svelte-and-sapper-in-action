@@ -47,7 +47,6 @@
       event.dataTransfer.setData('text/plain', JSON.stringify(data));
     },
     drop: async (event, newCategoryId) => {
-      event.preventDefault();
       const json = event.dataTransfer.getData('text/plain');
       const data = JSON.parse(json);
 
