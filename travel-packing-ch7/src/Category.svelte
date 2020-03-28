@@ -10,7 +10,7 @@
   export let show;
 
   const dispatch = createEventDispatcher();
-  let myDialog = null;
+  let dialog = null;
   let editing = false;
   let hovering = false;
   let itemName = '';
@@ -29,7 +29,7 @@
     );
     if (duplicate) {
       message = `The item "${itemName}" already exists.`;
-      myDialog.showModal();
+      dialog.showModal();
       return;
     }
 
@@ -73,8 +73,7 @@
     dnd.drop(event, category.id);
     hovering = false;
   }}
-  on:dragover|preventDefault
->
+  on:dragover|preventDefault>
   <h3>
     {#if editing}
       <input
@@ -104,15 +103,14 @@
         bind:item
         categoryId={category.id}
         {dnd}
-        on:delete={() => deleteItem(item)} 
-      />
+        on:delete={() => deleteItem(item)} />
     {:else}
       <div>This category does not contain any items yet.</div>
     {/each}
   </ul>
 </section>
 
-<Dialog title="Category" bind:dialog={myDialog}>
+<Dialog title="Category" bind:dialog>
   <div>{message}</div>
 </Dialog>
 

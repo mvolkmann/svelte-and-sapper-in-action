@@ -9,6 +9,7 @@
     "dev": "rollup -c -w",
     "format": "prettier --write 'src/**/*.{css,html,js,svelte}'",
     "lint": "eslint --fix --quiet src --ext .js,.svelte",
+    "reinstall": "rm -rf node_modules package-lock.json && npm install",
     "start": "sirv public --single",
     "storybook": "start-storybook -p 6006",
     "test": "jest src",

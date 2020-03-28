@@ -15,7 +15,7 @@
   const dispatch = createEventDispatcher();
   const options = {duration: 700, easing: linear, times: 2};
 
-  let myDialog = null;
+  let dialog = null;
   let editing = false;
   let hovering = false;
   let itemName = '';
@@ -62,7 +62,7 @@
       );
       if (duplicate) {
         message = `The item "${itemName}" already exists.`;
-        myDialog.showModal();
+        dialog.showModal();
         return;
       }
 
@@ -173,7 +173,7 @@
   </ul>
 </section>
 
-<Dialog title="Category" bind:dialog={myDialog}>
+<Dialog title="Category" bind:dialog>
   <div>{message}</div>
 </Dialog>
 

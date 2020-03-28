@@ -1,5 +1,5 @@
 <script>
-  import dialogPolyfill from 'dialog-polyfill'
+  import dialogPolyfill from 'dialog-polyfill';
   import {createEventDispatcher, onMount} from 'svelte';
 
   // Boolean that determines whether a close "X" should be displayed.
@@ -8,7 +8,7 @@
   // Optional CSS class name to be added to the dialog element.
   export let className = '';
 
-  // Parent components can use bind:dialog={myDialog} to get a
+  // Parent components can use bind:dialog to get a
   // reference so they can call show(), showModal(), and close().
   export let dialog;
 

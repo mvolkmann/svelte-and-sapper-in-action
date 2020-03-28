@@ -21,7 +21,7 @@
 
   <button on:click={() => dialog.showModal()}>Show Dialog</button>
 
-  <Dialog {title} bind:dialog={dialog} on:close={() => dialog.close()}>
+  <Dialog {title} bind:dialog on:close={() => dialog.close()}>
     {#each lines as line}
       <div>{line}</div>
     {/each}

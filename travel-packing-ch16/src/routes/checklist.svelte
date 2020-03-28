@@ -11,7 +11,7 @@
   let categoryArray = [];
   let categories = {};
   let categoryName;
-  let myDialog = null;
+  let dialog = null;
   let message = '';
   let restored = false;
   let show = 'all';
@@ -46,7 +46,7 @@
     );
     if (duplicate) {
       message = `The category "${categoryName}" already exists.`;
-      myDialog.showModal();
+      dialog.showModal();
       return;
     }
 
@@ -68,7 +68,7 @@
   function deleteCategory(category) {
     if (Object.values(category.items).length) {
       message = 'This category is not empty.';
-      myDialog.showModal();
+      dialog.showModal();
       return;
     }
 
@@ -151,7 +151,7 @@
     {/each}
   </div>
 </section>
-<Dialog title="Checklist" bind:dialog={myDialog}>
+<Dialog title="Checklist" bind:dialog>
   <div>{message}</div>
 </Dialog>
 
