@@ -1,5 +1,6 @@
 <script>
   import {createEventDispatcher} from 'svelte';
+  import {handleKey} from './util';
 
   export let categoryId;
   export let dnd;
@@ -12,11 +13,6 @@
     editing = false;
     // Signal to Category.svelte that it should save the item.
     dispatch('persist');
-  }
-
-  function handleKey(event) {
-    const {code} = event;
-    if (code === 'Enter' || code === 'Escape') event.target.blur();
   }
 </script>
 

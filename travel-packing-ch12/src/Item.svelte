@@ -1,5 +1,6 @@
 <script>
   import {createEventDispatcher} from 'svelte';
+  import {handleKey} from './util';
 
   export let categoryId;
   export let dnd;
@@ -7,11 +8,6 @@
 
   const dispatch = createEventDispatcher();
   let editing = false;
-
-  function handleKey(event) {
-    const {code} = event;
-    if (code === 'Enter' || code === 'Escape') event.target.blur();
-  }
 </script>
 
 <li>
@@ -33,8 +29,7 @@
       class="packed-{item.packed}"
       draggable={true}
       on:dragstart={event => dnd.drag(event, categoryId, item.id)}
-      on:click={() => (editing = true)}
-    >
+      on:click={() => (editing = true)}>
       {item.name}
     </span>
   {/if}

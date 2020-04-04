@@ -1,6 +1,6 @@
 <script>
   import Item from './Item.svelte';
-  import {getGuid, sortOnName} from './util';
+  import {getGuid, handleKey, sortOnName} from './util';
 
   export let categories;
   export let category;
@@ -32,10 +32,6 @@
     items[id] = {id, name: itemName, packed: false};
     category.items = items;
     itemName = '';
-  }
-
-  function handleKey(event) {
-    if (event.code === 'Enter') event.target.blur();
   }
 
   function shouldShow(show, item) {

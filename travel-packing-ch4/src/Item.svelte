@@ -1,12 +1,9 @@
 <script>
+  import {handleKey} from './util';
+
   export let item;
 
   let editing = false;
-
-  function handleKey(event) {
-    const {code} = event;
-    if (code === 'Enter' || code === 'Escape') event.target.blur();
-  }
 </script>
 
 <li>

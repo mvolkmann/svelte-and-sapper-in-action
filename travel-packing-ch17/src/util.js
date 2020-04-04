@@ -4,6 +4,13 @@ export function getGuid() {
   return uuidv4();
 }
 
+export function handleKey(event) {
+  const {code} = event;
+  if (code === 'Enter' || code === 'Escape' || code === 'Tab') {
+    event.target.blur();
+  }
+}
+
 export function sortOnName(array) {
   array.sort((el1, el2) =>
     el1.name.toLowerCase().localeCompare(el2.name.toLowerCase())

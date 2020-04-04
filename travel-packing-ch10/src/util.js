@@ -4,6 +4,13 @@ export function getGuid() {
   return uuidv4();
 }
 
+export function handleKey(event) {
+  const {code} = event;
+  if (code === 'Enter' || code === 'Escape' || code === 'Tab') {
+    event.target.blur();
+  }
+}
+
 export function isSafari() {
   const {userAgent} = navigator;
   const isChrome = userAgent.indexOf('Chrome') > -1;

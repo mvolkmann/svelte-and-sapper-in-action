@@ -1,7 +1,7 @@
 <script>
   import {createEventDispatcher} from 'svelte';
   import Item from './Item.svelte';
-  import {getGuid, sortOnName} from './util';
+  import {getGuid, handleKey, sortOnName} from './util';
 
   export let categories;
   export let category;
@@ -43,10 +43,6 @@
     category = category; // triggers update
 
     dispatch('persist');
-  }
-
-  function handleKey(event) {
-    if (event.code === 'Enter') event.target.blur();
   }
 
   function shouldShow(show, item) {

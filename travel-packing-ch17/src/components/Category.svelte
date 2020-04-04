@@ -5,7 +5,7 @@
   import {scale} from 'svelte/transition';
   import Dialog from './Dialog.svelte';
   import Item from './Item.svelte';
-  import {getGuid, sortOnName} from '../util';
+  import {getGuid, handleKey, sortOnName} from '../util';
 
   export let categoryMap;
   export let category;
@@ -46,10 +46,6 @@
     editing = false;
     // Signal to checklist.svelte that it should save the category.
     dispatch('persist');
-  }
-
-  function handleKey(event) {
-    if (event.code === 'Enter') event.target.blur();
   }
 
   async function saveItem(item) {

@@ -5,7 +5,7 @@
   import {scale} from 'svelte/transition';
   import Dialog from './Dialog.svelte';
   import Item from './Item.svelte';
-  import {getGuid, sortOnName} from '../util';
+  import {getGuid, handleKey, sortOnName} from '../util';
 
   export let categories;
   export let category;
@@ -52,10 +52,6 @@
     category = category; // triggers update
 
     dispatch('persist');
-  }
-
-  function handleKey(event) {
-    if (event.code === 'Enter') event.target.blur();
   }
 
   function shouldShow(show, item) {
@@ -107,9 +103,7 @@
       <span on:click={() => (editing = true)}>{category.name}</span>
     {/if}
     <span class="status">{status}</span>
-    <button class="icon" on:click={() => dispatch('delete')}>
-      &#x1F5D1;
-    </button>
+    <button class="icon" on:click={() => dispatch('delete')}>&#x1F5D1;</button>
   </h2>
 
   <form on:submit|preventDefault={addItem}>
