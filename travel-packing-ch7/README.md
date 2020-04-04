@@ -1,6 +1,6 @@
-# travel-packing-ch6
+# travel-packing-ch7
 
-This is the chapter 6 version of the travel packing app.
+This is the chapter 7 version of the travel packing app.
 
 To run this:
 

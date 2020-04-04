@@ -1,6 +1,6 @@
-# travel-packing-ch8
+# travel-packing-ch9
 
-This is the chapter 8 version of the travel packing app.
+This is the chapter 9 version of the travel packing app.
 
 To run this:
 
