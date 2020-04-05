@@ -1,6 +1,6 @@
 <script>
   import {createEventDispatcher} from 'svelte';
-  import {handleKey} from './util';
+  import {blurOnKey} from './util';
 
   export let item;
 
@@ -16,7 +16,7 @@
       autofocus
       bind:value={item.name}
       on:blur={() => (editing = false)}
-      on:keydown={handleKey}
+      on:keydown={blurOnKey}
       type="text" />
   {:else}
     <span class="packed-{item.packed}" on:click={() => (editing = true)}>

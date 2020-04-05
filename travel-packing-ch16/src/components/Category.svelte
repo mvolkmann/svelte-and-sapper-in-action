@@ -5,7 +5,7 @@
   import {scale} from 'svelte/transition';
   import Dialog from './Dialog.svelte';
   import Item from './Item.svelte';
-  import {getGuid, handleKey, sortOnName} from '../util';
+  import {getGuid, blurOnKey, sortOnName} from '../util';
 
   export let categories;
   export let category;
@@ -98,7 +98,7 @@
       <input
         bind:value={category.name}
         on:blur={() => (editing = false)}
-        on:keypress={handleKey} />
+        on:keypress={blurOnKey} />
     {:else}
       <span on:click={() => (editing = true)}>{category.name}</span>
     {/if}
