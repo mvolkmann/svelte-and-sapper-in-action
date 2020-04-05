@@ -39,6 +39,10 @@
 </main>
 
 <style>
+  :global(body) {
+    background-color: cornflowerblue;
+  }
+
   .hero {
     --height: 7rem;
 
@@ -54,12 +58,10 @@
   }
 
   main {
-    background-color: cornflowerblue;
     color: white;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    height: 100vh;
   }
 </style>
