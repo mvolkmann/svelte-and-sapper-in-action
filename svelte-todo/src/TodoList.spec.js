@@ -1,5 +1,5 @@
 import {tick} from 'svelte';
-import {cleanup, fireEvent, render, wait} from '@testing-library/svelte';
+import {cleanup, fireEvent, render, waitFor} from '@testing-library/svelte';
 
 import TodoList from './TodoList.svelte';
 
@@ -9,7 +9,7 @@ describe('TodoList', () => {
   afterEach(cleanup);
 
   function expectTodoCount(count) {
-    return wait(() => {
+    return waitFor(() => {
       // Each todo has an <li> root element.
       const lis = document.querySelectorAll('li');
       expect(lis.length).toBe(count);

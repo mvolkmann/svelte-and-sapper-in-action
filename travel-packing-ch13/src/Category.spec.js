@@ -1,5 +1,5 @@
 import {tick} from 'svelte';
-import {cleanup, fireEvent, render, wait} from '@testing-library/svelte';
+import {cleanup, fireEvent, render, waitFor} from '@testing-library/svelte';
 
 import Category from './Category.svelte';
 
@@ -28,7 +28,7 @@ describe('Category', () => {
   });
 
   function expectItemCount(count) {
-    return wait(() => {
+    return waitFor(() => {
       // Each item has an <li> root element.
       const lis = document.querySelectorAll('li');
       expect(lis.length).toBe(count);
