@@ -2,46 +2,28 @@ const baseUrl = 'http://localhost:5000/';
 
 function login() {
   cy.visit(baseUrl);
-  cy.contains('Username')
-    .children('input')
-    .type('username');
-  cy.contains('Password')
-    .children('input')
-    .type('password');
-  cy.get('button')
-    .contains('Login')
-    .click();
+  cy.contains('Username').children('input').type('username');
+  cy.contains('Password').children('input').type('password');
+  cy.get('button').contains('Login').click();
 }
 
 function addCategories() {
   login();
 
-  cy.get('[data-testid=category-name-input]')
-    .as('nameInput')
-    .type('Clothes');
-  cy.get('button')
-    .contains('Add Category')
-    .click();
+  cy.get('[data-testid=category-name-input]').as('nameInput').type('Clothes');
+  cy.get('button').contains('Add Category').click();
 
   cy.get('@nameInput').type('Toiletries{enter}');
 }
 
 function addItems() {
   addCategories();
-  cy.get('[data-testid=item-input]')
-    .first()
-    .as('item-input-1')
-    .type('socks');
-  cy.get('button')
-    .contains('Add Item')
-    .first()
-    .click();
+  cy.get('[data-testid=item-input]').first().as('item-input-1').type('socks');
+  cy.get('button').contains('Add Item').first().click();
   cy.get('@item-input-1').type('shoes{enter}');
   verifyStatus('Clothes', '2 of 2 remaining');
 
-  cy.get('[data-testid=item-input]')
-    .last()
-    .type('razor{enter}');
+  cy.get('[data-testid=item-input]').last().type('razor{enter}');
   verifyStatus('Toiletries', '1 of 1 remaining');
 }
 
@@ -104,14 +86,17 @@ describe('Travel Packing app', () => {
     deleteItem('razor');
     verifyStatus('Toiletries', '0 of 0 remaining');
 
-    deleteCategory('Toiletries');
+    const categoryName = 'Toiletries';
+    // Verify that the category exists.
+    cy.get('.categories h2 > span').contains(categoryName);
+    deleteCategory(categoryName);
+    // Verify that the category no longer exists.
+    cy.get('.categories h2 > span').contains(categoryName).should('not.exist');
   });
 
   it('should logout', () => {
     addItems();
-    cy.get('button')
-      .contains('Log Out')
-      .click();
+    cy.get('button').contains('Log Out').click();
     cy.contains('Login');
   });
 });

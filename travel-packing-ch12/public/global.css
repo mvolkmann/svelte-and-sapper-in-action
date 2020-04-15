@@ -1,4 +1,8 @@
 body {
+  --heading-bg-color: #a3660a;
+  --primary-color: #3f6fde;
+
+  background-color: var(--primary-color);
   font-family: sans-serif;
   height: 100vh;
   margin: 0;

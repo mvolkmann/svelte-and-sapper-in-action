@@ -10,7 +10,7 @@ export const basic = () => ({
   props: {
     component: Login,
     style: `
-      background-color: #3F6FDE;
+      background-color: var(--primary-color);
       height: 100vh;
       padding: 1rem
     `

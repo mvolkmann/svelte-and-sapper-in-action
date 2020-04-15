@@ -39,14 +39,10 @@
 </main>
 
 <style>
-  :global(body) {
-    background-color: #3f6fde;
-  }
-
   .hero {
     --height: 7rem;
 
-    background-color: #a3660a;
+    background-color: var(--heading-bg-color);
     color: white;
     font-size: 4rem;
     height: var(--height);

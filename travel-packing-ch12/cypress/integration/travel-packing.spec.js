@@ -104,7 +104,14 @@ describe('Travel Packing app', () => {
     deleteItem('razor');
     verifyStatus('Toiletries', '0 of 0 remaining');
 
-    deleteCategory('Toiletries');
+    const categoryName = 'Toiletries';
+    // Verify that the category exists.
+    cy.get('.categories h2 > span').contains(categoryName);
+    deleteCategory(categoryName);
+    // Verify that the category no longer exists.
+    cy.get('.categories h2 > span')
+      .contains(categoryName)
+      .should('not.exist');
   });
 
   it('should logout', () => {

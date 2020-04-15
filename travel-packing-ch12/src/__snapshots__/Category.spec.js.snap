@@ -5,7 +5,6 @@ exports[`Category should match snapshot 1`] = `
   <div>
     <section
       class="svelte-m97krx"
-      ondragover="return false"
     >
       <h2
         class="svelte-m97krx"
@@ -50,22 +49,23 @@ exports[`Category should match snapshot 1`] = `
       >
         <div>
           <li
-            class="svelte-ft3yg2"
-            draggable="true"
+            class="svelte-xu143h"
           >
             <input
-              class="svelte-ft3yg2"
+              aria-label="Toggle Packed"
+              class="svelte-xu143h"
               type="checkbox"
             />
              
             <span
-              class="packed-false svelte-ft3yg2"
+              class="packed-false svelte-xu143h"
+              draggable="true"
             >
               shoes
             </span>
              
             <button
-              class="icon svelte-ft3yg2"
+              class="icon svelte-xu143h"
               data-testid="delete"
             >
               🗑
@@ -75,22 +75,23 @@ exports[`Category should match snapshot 1`] = `
         </div>
         <div>
           <li
-            class="svelte-ft3yg2"
-            draggable="true"
+            class="svelte-xu143h"
           >
             <input
-              class="svelte-ft3yg2"
+              aria-label="Toggle Packed"
+              class="svelte-xu143h"
               type="checkbox"
             />
              
             <span
-              class="packed-true svelte-ft3yg2"
+              class="packed-true svelte-xu143h"
+              draggable="true"
             >
               socks
             </span>
              
             <button
-              class="icon svelte-ft3yg2"
+              class="icon svelte-xu143h"
               data-testid="delete"
             >
               🗑
@@ -102,27 +103,27 @@ exports[`Category should match snapshot 1`] = `
     </section>
      
     <dialog
-      class="dialog svelte-17hrmky"
+      class="dialog svelte-1k3lua3"
     >
       <header
-        class="svelte-17hrmky"
+        class="svelte-1k3lua3"
       >
          
         <div
-          class="title svelte-17hrmky"
+          class="title svelte-1k3lua3"
         >
           Category
         </div>
          
         <button
-          class="close-btn svelte-17hrmky"
+          class="close-btn svelte-1k3lua3"
         >
           ✖
         </button>
       </header>
        
       <section
-        class="svelte-17hrmky"
+        class="svelte-1k3lua3"
       >
         <div>
           

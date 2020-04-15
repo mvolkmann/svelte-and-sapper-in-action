@@ -78,7 +78,7 @@
     justify-content: space-between;
     align-items: center;
 
-    background-color: #3f6fde;
+    background-color: var(--primary-color);
     box-sizing: border-box;
     color: white;
     font-weight: bold;

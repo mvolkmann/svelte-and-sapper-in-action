@@ -29,7 +29,8 @@
 </section>
 
 <style>
-  input, textarea {
+  input,
+  textarea {
     margin: 0 1rem 1rem 1rem;
   }
 
@@ -40,7 +41,7 @@
   }
 
   section {
-    background-color: #3F6FDE;
+    background-color: var(--primary-color);
     height: 100vh;
     padding: 1rem;
   }
