@@ -10,7 +10,7 @@ function getOptions(items) {
     Component: Category,
     props: {
       category,
-      categories: [category],
+      categories: {[category.id]: category},
       dnd: {},
       show: 'all'
     },

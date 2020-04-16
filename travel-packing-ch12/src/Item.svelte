@@ -54,10 +54,6 @@
     border: solid lightgray 1px;
   }
 
-  label > span {
-    display: none;
-  }
-
   li {
     display: flex;
     align-items: center;
