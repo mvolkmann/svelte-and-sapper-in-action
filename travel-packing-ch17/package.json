@@ -1,6 +1,8 @@
 {
   "name": "travel-packing",
   "version": "0.0.1",
+  "license": "MIT",
+  "repository": "git@github.com:mvolkmann/svelte-and-sapper-in-action.git",
   "scripts": {
     "cy:run": "cypress run",
     "cy:open": "cypress open",
