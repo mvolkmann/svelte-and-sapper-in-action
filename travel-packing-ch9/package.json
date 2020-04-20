@@ -1,6 +1,8 @@
 {
   "name": "travel-packing",
   "version": "1.0.0",
+  "license": "MIT",
+  "repository": "git@github.com:mvolkmann/svelte-and-sapper-in-action.git",
   "scripts": {
     "build": "rollup -c",
     "dev": "rollup -c -w",
