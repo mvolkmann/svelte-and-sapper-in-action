@@ -9,6 +9,8 @@
     "cy:open": "cypress open",
     "cy:run": "cypress run",
     "dev": "rollup -c -w",
+    "docker:build": "docker build -t svelte/travel-packing-ch13 .",
+    "docker:run": "docker run -p 5000:5000 svelte/travel-packing-ch13",
     "format": "prettier --write 'src/**/*.{css,html,js,svelte}'",
     "lint": "eslint --fix --quiet src --ext .js,.svelte",
     "reinstall": "rm -rf node_modules package-lock.json && npm install",
