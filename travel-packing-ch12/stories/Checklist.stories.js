@@ -11,6 +11,7 @@ export const basic = () => ({
     component: Checklist,
     style: `
       background-color: var(--primary-color);
+      color: white;
       height: 100vh;
       padding: 1rem
     `
