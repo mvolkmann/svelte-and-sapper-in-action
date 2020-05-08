@@ -4,23 +4,23 @@ exports[`Item should match snapshot 1`] = `
 <body>
   <div>
     <li
-      class="svelte-xu143h"
+      class="svelte-ft3yg2"
     >
       <input
         aria-label="Toggle Packed"
-        class="svelte-xu143h"
+        class="svelte-ft3yg2"
         type="checkbox"
       />
        
       <span
-        class="packed-false svelte-xu143h"
+        class="packed-false svelte-ft3yg2"
         draggable="true"
       >
         socks
       </span>
        
       <button
-        class="icon svelte-xu143h"
+        class="icon svelte-ft3yg2"
         data-testid="delete"
       >
         🗑
