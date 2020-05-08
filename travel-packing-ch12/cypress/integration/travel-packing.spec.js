@@ -115,7 +115,7 @@ describe('Travel Packing app', () => {
   });
 
   it('should logout', () => {
-    addItems();
+    login();
     cy.get('button')
       .contains('Log Out')
       .click();
