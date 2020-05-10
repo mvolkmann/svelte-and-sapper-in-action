@@ -1,18 +1,18 @@
 <script>
   let mainElement;
   let online = true;
-  $: title = 'Travel Packing Checklist' + (online ? '' : ' Offline'); <1>
+  $: title = 'Travel Packing Checklist' + (online ? '' : ' Offline');
   $: if (mainElement) {
-    mainElement.style.setProperty( <2>
+    mainElement.style.setProperty(
       '--main-bg-color',
       online ? '#3f6fde' : 'gray'
-    ); 
+    );
   }
 </script>
 
-<svelte:window bind:online /> <3>
+<svelte:window bind:online />
 
-<main bind:this={mainElement}> <4>
+<main bind:this={mainElement}>
   <h1 class="hero">{title}</h1>
   <slot />
 </main>
