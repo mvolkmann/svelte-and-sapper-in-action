@@ -1,6 +1,6 @@
 <script>
   import {createEventDispatcher} from 'svelte';
-  import {blurOnKey} from './util';
+  import {blurOnKey} from '../util';
 
   export let categoryId;
   export let dnd;
