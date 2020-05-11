@@ -1,0 +1,28 @@
+body {
+  font-family: sans-serif;
+  margin: 0;
+}
+
+h1 {
+  margin-top: 0;
+}
+
+input {
+  border: solid lightgray 1px;
+  border-radius: 4px;
+  padding: 4px;
+}
+
+label {
+  font-weight: bold;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+td,
+th {
+  border: solid lightgray 1px;
+  padding: 5px 10px;
+}
