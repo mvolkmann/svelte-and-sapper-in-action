@@ -1,0 +1,30 @@
+{
+  "Dasher": {
+    "name": "Dasher",
+    "gender": "male",
+    "breed": "Whippet",
+    "imageUrl": "./images/whippet.jpg",
+    "description": "The sleek, sweet-faced Whippet, \"Poor Man's Racehorse\" is lightning quick. He is an amiable, dignified, and gentle soul, but give him something to chase and he's all business. The name Whippet is synonymous with streamlined grace."
+  },
+  "Maisey": {
+    "name": "Maisey",
+    "gender": "female",
+    "breed": "Treeing Walker Coonhound",
+    "imageUrl": "./images/treeing-walker-coonhound.jpg",
+    "description": "A smart, brave, and sensible hunter, the Treeing Walker Coonhound is a genuine American favorite, nicknamed \"The People's Choice.\" Don't let the name fool you. Walkers are runners and are capable of covering a lot of ground in a hurry."
+  },
+  "Ramsay": {
+    "name": "Ramsay",
+    "gender": "male",
+    "breed": "Native American Indian Dog (NAID)",
+    "imageUrl": "./images/native-american-indian-dog.jpg",
+    "description": "The NAID is one of friendliest dog breeds. Native American Indian dogs get along well with everyone, even with other pets in the household. They're known for their gentle nature, so they can be trusted around kids. These dogs are extremely loyal too, forming deep bonds with their human pack. They enjoy spending time with and being around their owners."
+  },
+  "Oscar Wilde": {
+    "name": "Oscar Wilde",
+    "gender": "male",
+    "breed": "German Shorthaired Pointer (GSP)",
+    "imageUrl": "./images/german-shorthaired-pointer.jpg",
+    "description": "Male German Shorthaired Pointers stand between 23 and 25 inches at the shoulder and weigh anywhere from 55 to 70 pounds; females run smaller. The coat is solid liver (a reddish brown), or liver and white in distinctive patterns. The dark eyes shine with enthusiasm and friendliness. Built to work long days in the field or at the lake, GSPs are known for power, speed, agility, and endurance. \"Noble\" and \"aristocratic\" are words often used to describe the overall look. GSPs make happy, trainable pets who bond firmly to their family. They are always up for physical activities like running, swimming, organized dog sports - in fact, anything that will burn some of their boundless energy while spending outdoors time with a human buddy."
+  }
+}
