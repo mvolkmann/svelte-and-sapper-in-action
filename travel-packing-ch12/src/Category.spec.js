@@ -1,4 +1,3 @@
-import {tick} from 'svelte';
 import {cleanup, fireEvent, render, waitFor} from '@testing-library/svelte';
 
 import Category from './Category.svelte';
@@ -74,14 +73,12 @@ describe('Category', () => {
     const [shoesCheckbox, socksCheckbox] = checkboxes;
 
     expect(socksCheckbox.nextElementSibling.textContent).toBe('socks');
-    fireEvent.click(socksCheckbox);
-    await tick();
+    await fireEvent.click(socksCheckbox);
     // Now nothing in this category is packed.
     expect(getByText('2 of 2 remaining'));
 
     expect(shoesCheckbox.nextElementSibling.textContent).toBe('shoes');
-    fireEvent.click(shoesCheckbox);
-    await tick();
+    await fireEvent.click(shoesCheckbox);
     // Now one item in this category is packed.
     expect(getByText('1 of 2 remaining'));
   });
