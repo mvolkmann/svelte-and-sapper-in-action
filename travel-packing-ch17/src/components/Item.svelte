@@ -63,9 +63,9 @@
 
   li {
     cursor: pointer;
-    display: inline-block;
-    /*display: flex;
-    align-items: center;*/
+    /* display: inline-block; */
+    display: flex;
+    align-items: center;
   }
 
   .packed-true {
