@@ -38,7 +38,7 @@
 {:else}
   <h1>{dog.name} - {dog.breed}</h1>
   <div class="container">
-    <div class="left">
+    <div>
       <p>{dog.description}</p>
       <button on:click={back}>Back</button>
     </div>
